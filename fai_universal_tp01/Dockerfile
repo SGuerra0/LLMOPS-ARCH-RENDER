@@ -2,10 +2,10 @@
 FROM python:3.9
 
 # Step 2: Set the working directory inside the container
-WORKDIR /FAI-STG01-TP01-01
+WORKDIR /fai_uni01_tp01_01
 
 # Step 3: Copy the local code into the container
-COPY FAI-STG01-TP01-01 .
+COPY fai_uni01_tp01_01 .
 
 # Step 4: Install dependencies
 RUN pip install --upgrade pip

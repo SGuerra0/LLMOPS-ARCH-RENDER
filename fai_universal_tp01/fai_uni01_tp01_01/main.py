@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 from langchain_fireworks import FireworksEmbeddings
 import nltk 
 import spacy
@@ -6,7 +7,7 @@ from src.utilities import *
 
 def main():
     # Cargar variables de entorno
-    load_dotenv()
+    load_dotenv(".env")
     
     # Cargar el modelo de spaCy para espanol
     nlp = spacy.load(os.getenv("SPACY_MODEL"))
@@ -16,6 +17,11 @@ def main():
 
     # Cliente LangSmith
     # Configura tu cliente de ChromaDB
+    #chroma_client = chromadb.HttpClient(
+    #    host=os.getenv("CHROMA_HOST"),  # Use the service name or pod IP
+    #    port=int(os.getenv("CHROMA_PORT"))  # Default port or defined in your service
+    #)
+
     chroma_client = chromadb.PersistentClient(path=os.getenv("CHROMA_PATH"))
 
     embedding_model = FireworksEmbeddings(

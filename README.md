@@ -3,12 +3,17 @@ MLOps y LLMOps Infra
 
 # Componentes 
 ## Fabrica:
-- FDD: Fabrica de Datos
-- FAI: Fabrica de IA
+- fdd: Fabrica de Datos
+- fai: Fabrica de IA
 
 ## Capa
-- STG: Stage
-- UNI: Universal
+- stg: Stage
+- uni: Universal
+
+## Pipeline
+- fet: Feature
+- tra: Entrenamiento
+- inf: Inferencia
 
 OBS: Se le agrega correlativo para "n" proyectos
 
@@ -24,22 +29,33 @@ OBS: Se le agrega correlativo para "n" proyectos
 - 01: LLM
 
 ## Ejemplo de flujo de trabajo
-FAI-STG01-TP01-01
-- FAI: Fabrica de IA
-- STG: Stage (correlativo 01)
-- TP: LLM (Le he agregado este detalle como ejemplo de arquitectura LLM)
+fai_stg01_tp01_01
+- fai: Fabrica de IA
+- uni: universal (correlativo 01)
+- tp: LLM (Le he agregado este detalle como ejemplo de arquitectura LLM)
 - 01: Correlativo de proceso
 
-FAI-STG01-TP01-02
-- Continuacion de proceso, lo estoy afinando. Le quise agregar este "job" para la evaluacion del embedding.
+# Estructura datos
+- En carpeta raiz
+mkdir -p datos/raw
+- Mover archivos .pdf, .json... a carpeta datos/raw
+mkdir -p datos/universal
 
-# Implementacion de prueba
-docker build -t {USER}/{CONT_NAME}:{VERSION} .
-- Ejemplo: docker build -t mgarcia92/emb:0.1 .
+# Implementaciones
 
-docker run -it --name {NAME} {USER}/{CONT_NAME}:{VERSION}
-- Ejemplo: docker run -it --name emb_container mgarcia92/emb:0.1
+## Local: Consola
+### Ingesta a BBDD Vector -> Chroma
+- En carpeta raiz
+cd fai_universal_tp01/fai_uni01_tp01_01
+python3 main.py
 
-## En el contenedor
-from main import *
-main()
+### Inferencia
+- Consola 1: Inicializacion de la API del LLM (En carpeta raiz)
+
+cd fai_inference_tp01/fai_inf01_tp01_01
+python3 main.py 
+
+- Consola 2: Inicializacion sevicio de streamlit (En carpeta raiz)
+
+cd fai_inference_tp01/fai_inf01_tp01_01/frontend
+streamlit run main_streamlit.py

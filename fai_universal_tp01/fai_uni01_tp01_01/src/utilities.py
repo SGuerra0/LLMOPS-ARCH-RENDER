@@ -1,14 +1,10 @@
 import os
-from dotenv import load_dotenv
 from langchain.schema import Document
 import chromadb
 import json
 import glob
 import pypdfium2
 import uuid
-
-# Cargar variables de entorno
-load_dotenv()
 
 # Funciones para cargar y procesar documentos
 def load_documents():
@@ -45,16 +41,16 @@ def load_documents():
 
 def extract_text_from_json(data):
     """
-    Extrae los valores de 'input' como t�tulos y 'output' como contenido.
+    Extrae los valores de 'input' como titulos y 'output' como contenido.
     """
-    if isinstance(data, list):  # Asumimos que los registros est�n en una lista
+    if isinstance(data, list):  # Asumimos que los registros estan en una lista
         documents = []
         for item in data:
             if "input" in item and "output" in item:
                 input_text = item.get("input", "")
                 output_text = item.get("output", "")
-                # Combina el input como t�tulo y el output como contenido
-                full_text = f"T�tulo: {input_text}\n\nContenido: {output_text}"
+                # Combina el input como titulo y el output como contenido
+                full_text = f"Titulo: {input_text}\n\nContenido: {output_text}"
                 documents.append(full_text)
         return "\n".join(documents)
     else:
@@ -70,7 +66,7 @@ def extract_text_from_pdf(pdf_file):
             if page_text:
                 text += page_text + "\n"
             else:
-                print(f"No se extrajo texto de la p�gina {page_num} del archivo PDF: {pdf_file}")
+                print(f"No se extrajo texto de la pagina {page_num} del archivo PDF: {pdf_file}")
         pdf_document.close()
     except Exception as e:
         print(f"Error al abrir el archivo PDF: {pdf_file}. Error: {e}")
@@ -78,7 +74,7 @@ def extract_text_from_pdf(pdf_file):
 
 def split_text(documents, nlp, max_chunk_size=1000):
     """
-    Divide los documentos en chunks sem�nticos utilizando spaCy.
+    Divide los documentos en chunks semanticos utilizando spaCy.
     """
     chunks = []
     for doc in documents:
@@ -101,7 +97,7 @@ def split_text(documents, nlp, max_chunk_size=1000):
                 current_chunk = sentence + ' '
                 current_length = sentence_length
 
-        # Agregar el �ltimo chunk
+        # Agregar el ultimo chunk
         if current_chunk:
             chunks.append(Document(page_content=current_chunk.strip(), metadata=doc.metadata))
 
@@ -114,7 +110,7 @@ def save_to_chroma(chunks, chroma_client, embedding_model):
     metadatas = [chunk.metadata for chunk in chunks if chunk.page_content.strip()]
     ids = [str(uuid.uuid4()) for _ in range(len(texts))]
 
-    # Crear o obtener la colecci�n
+    # Crear o obtener la coleccion
     if os.getenv("DB_NAME") in [collection.name for collection in chroma_client.list_collections()]:
         collection = chroma_client.get_collection(name=os.getenv("DB_NAME"))
     else:
@@ -138,4 +134,4 @@ def save_to_chroma(chunks, chroma_client, embedding_model):
     # Configura el cliente para que persista la base de datos en la ruta especificada
     client = chromadb.PersistentClient(path=os.getenv("CHROMA_PATH"))
 
-    print(f"Guardados {len(texts)} chunks en la colecci�n.")
+    print(f"Guardados {len(texts)} chunks en la coleccion.")
