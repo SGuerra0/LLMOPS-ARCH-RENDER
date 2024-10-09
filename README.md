@@ -37,9 +37,9 @@ fai_stg01_tp01_01
 
 # Estructura datos
 - En carpeta raiz
-mkdir -p datos/raw
-- Mover archivos .pdf, .json... a carpeta datos/raw
-mkdir -p datos/universal
+mkdir -p data/raw
+- Mover archivos .pdf, .json... a carpeta data/raw
+mkdir -p data/universal
 
 # Implementaciones
 
