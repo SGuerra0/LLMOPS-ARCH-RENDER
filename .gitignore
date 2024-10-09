@@ -1,3 +1,4 @@
 .conda
 .DS_Store
 /data
+venv
