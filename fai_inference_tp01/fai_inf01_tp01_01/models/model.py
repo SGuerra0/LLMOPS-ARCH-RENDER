@@ -5,25 +5,29 @@ from dotenv import load_dotenv
 
 load_dotenv(".env")
 
-# Set up Fireworks Model Wrapper
-model_wrapper = Fireworks(
-    model=os.getenv("FIREWORKS_WRAPPER_MODEL"),
-    temperature=0.6,
-    max_tokens=400
-)
+# Función para actualizar dinámicamente el modelo del model_wrapper
+def update_model(model_name: str, temperature: float) -> Fireworks:
+    """
+    Actualiza el model_wrapper con el nuevo modelo y temperatura seleccionados.
+    """
+    return Fireworks(
+        model=model_name,
+        temperature=temperature,
+        max_tokens=400
+    )
 
-# Load Fireworks Embeddings for document retrieval
+# Cargar Fireworks Embeddings para la recuperación de documentos
 embedding_model = FireworksEmbeddings(
     model=os.getenv("FIREWORKS_EMBEDDING_MODEL")
 )
 
-# Configure ChromaDB client for document storage and retrieval
+# Configurar ChromaDB para almacenamiento y recuperación de documentos
 chroma_client = chromadb.PersistentClient(path=os.getenv("CHROMA_PATH"))
 collection = chroma_client.get_collection(os.getenv("DB_NAME"))
 
 def retrieve_docs(question: str) -> str:
     """
-    Retrieve relevant documents based on the question using embeddings.
+    Recuperar documentos relevantes basados en la pregunta usando embeddings.
     """
     try:
         query_embedding = embedding_model.embed_query(question)
@@ -35,7 +39,7 @@ def retrieve_docs(question: str) -> str:
         print(f"Error retrieving documents: {e}")
         return ""
 
-    # Filter documents based on similarity threshold
+    # Filtrar documentos basados en el umbral de similitud
     threshold = 1.0
     filtered_docs = []
     for doc_list, distance_list in zip(results['documents'], results['distances']):
@@ -43,13 +47,13 @@ def retrieve_docs(question: str) -> str:
             if distance >= threshold:
                 filtered_docs.append(doc)
 
-    # Use all documents if no filtered documents meet the threshold
+    # Usar todos los documentos si no se filtran por el umbral
     if not filtered_docs:
         filtered_docs = [item for sublist in results['documents'] for item in sublist]
 
     return "\n\n---\n\n".join(filtered_docs)
 
-# Define the RAGBot class for handling inference and Q&A
+# Clase RAGBot que maneja las inferencias y preguntas
 class RagBot:
     def __init__(self, model, retriever):
         self._model = model
@@ -57,11 +61,11 @@ class RagBot:
 
     def get_answer(self, question: str):
         """
-        Get the answer based on the input question using the generative model.
+        Obtener la respuesta basada en la pregunta utilizando el modelo generativo.
         """
         docs = self._retriever(question)
         if not docs.strip():
-            return "No relevant information found.", ""
+            return "No se encontró información relevante.", ""
 
         prompt = f"""You are an AFP Uno expert. Based on the following information, answer the question concisely and clearly:
         Information:    
@@ -77,7 +81,7 @@ class RagBot:
             generated_text = "Error generating the response."
 
         return generated_text, docs
-    
+
 # Clase para el bot por defecto (sin contexto de documentos)
 class DefaultBot:
     def __init__(self, model):
