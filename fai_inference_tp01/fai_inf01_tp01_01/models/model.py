@@ -77,3 +77,25 @@ class RagBot:
             generated_text = "Error generating the response."
 
         return generated_text, docs
+    
+# Clase para el bot por defecto (sin contexto de documentos)
+class DefaultBot:
+    def __init__(self, model):
+        self._model = model
+
+    def get_answer(self, question: str):
+        """
+        Obtener respuesta basada únicamente en la pregunta, sin contexto adicional.
+        """
+        prompt = f"""You are an AFP Uno expert. Answer the question concisely and clearly:
+        Question: {question}
+        Answer:"""
+
+        try:
+            result = self._model.generate([prompt])
+            generated_text = result.generations[0][0].text.strip()
+        except Exception as e:
+            print(f"Error generating response: {e}")
+            generated_text = "Error generating the response."
+
+        return generated_text
