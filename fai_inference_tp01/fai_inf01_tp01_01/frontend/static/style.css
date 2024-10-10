@@ -1,22 +1,36 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
+/* Estilos generales para las cajas de respuesta y contexto */
+.answer-container, .context-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
-.container {
-    width: 50%;
-    margin: auto;
-    padding: 20px;
-}
-textarea {
+
+.answer-box, .context-box {
+    max-width: 700px; /* Limitar el ancho máximo de las cajas */
     width: 100%;
-    height: 100px;
+    text-align: left;
 }
+
+/* Estilos para el contenedor principal */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Botones */
 button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #5c85d6;
+    background-color: #007bff; /* Azul oscuro */
+    color: white;
     border: none;
-    color: #fff;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3; /* Azul más oscuro */
 }
