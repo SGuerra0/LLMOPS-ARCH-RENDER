@@ -5,6 +5,52 @@ import json
 import glob
 import pypdfium2
 import uuid
+import spacy
+
+# Cargar el modelo de SpaCy para español
+nlp = spacy.load('es_core_news_sm')
+
+def normalize_text_preserve_entities(text):
+    """
+    Normaliza el texto preservando la capitalización de entidades nombradas (personas, organizaciones, etc.).
+    """
+    # Procesar el texto con SpaCy
+    doc = nlp(text)
+    
+    normalized_tokens = []
+    for token in doc:
+        # Si es una entidad nombrada, no convertir a minúsculas
+        if token.ent_type_:
+            normalized_tokens.append(token.text)  # Mantener la capitalización original
+        else:
+            normalized_tokens.append(token.text.lower())  # Convertir a minúsculas
+    
+    return " ".join(normalized_tokens)
+
+def extract_metadata(text, source):
+    """
+    Extrae entidades nombradas y fechas automáticamente utilizando SpaCy como metadatos.
+    """
+    doc = nlp(text)
+    metadata = {
+        "source": source,
+        "persons": [],
+        "organizations": [],
+        "locations": [],
+        "dates": []
+    }
+
+    for ent in doc.ents:
+        if ent.label_ == "PER":
+            metadata["persons"].append(ent.text)
+        elif ent.label_ == "ORG":
+            metadata["organizations"].append(ent.text)
+        elif ent.label_ in ["LOC", "GPE"]:
+            metadata["locations"].append(ent.text)
+        elif ent.label_ == "DATE":
+            metadata["dates"].append(ent.text)
+
+    return metadata
 
 # Funciones para cargar y procesar documentos
 def load_documents():
@@ -14,10 +60,10 @@ def load_documents():
     for pdf_file in pdf_files:
         pdf_text = extract_text_from_pdf(pdf_file)
         if pdf_text.strip():
-            pdf_documents.append(Document(page_content=pdf_text, metadata={"source": pdf_file}))
+            metadata = extract_metadata(pdf_text, pdf_file)
+            pdf_documents.append(Document(page_content=pdf_text, metadata=metadata))
         else:
             print(f"No se extrajo texto del archivo PDF: {pdf_file}")
-
 
     # Cargar documentos JSON y extraer el contenido de input y output
     json_files = glob.glob(os.path.join(os.getenv("DATA_PATH"), "*.json"))
@@ -29,7 +75,8 @@ def load_documents():
                 # Extraer el texto de 'input' y 'output'
                 text = extract_text_from_json(data)
                 if text.strip():
-                    json_documents.append(Document(page_content=text, metadata={"source": json_file}))
+                    metadata = extract_metadata(text, json_file)
+                    json_documents.append(Document(page_content=text, metadata=metadata))
                 else:
                     print(f"No se extrajo texto del archivo JSON: {json_file}")
             except json.JSONDecodeError:
@@ -51,7 +98,9 @@ def extract_text_from_json(data):
                 output_text = item.get("output", "")
                 # Combina el input como titulo y el output como contenido
                 full_text = f"Titulo: {input_text}\n\nContenido: {output_text}"
-                documents.append(full_text)
+                # Normalizar el texto extraido preservando entidades
+                normalized_text = normalize_text_preserve_entities(full_text)
+                documents.append(normalized_text)
         return "\n".join(documents)
     else:
         return ""
@@ -64,7 +113,9 @@ def extract_text_from_pdf(pdf_file):
             page = pdf_document[page_num]
             page_text = page.get_textpage().get_text_range()
             if page_text:
-                text += page_text + "\n"
+                # Normalizar el texto extraido preservando entidades
+                normalized_text = normalize_text_preserve_entities(page_text)
+                text += normalized_text + "\n"
             else:
                 print(f"No se extrajo texto de la pagina {page_num} del archivo PDF: {pdf_file}")
         pdf_document.close()
@@ -74,7 +125,7 @@ def extract_text_from_pdf(pdf_file):
 
 def split_text(documents, nlp, max_chunk_size=1000):
     """
-    Divide los documentos en chunks semanticos utilizando spaCy.
+    Divide los documentos en chunks semanticos utilizando SpaCy.
     """
     chunks = []
     for doc in documents:
