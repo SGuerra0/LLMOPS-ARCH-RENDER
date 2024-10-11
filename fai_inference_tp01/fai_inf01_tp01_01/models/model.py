@@ -2,10 +2,12 @@ import os
 import chromadb
 from langchain_fireworks import FireworksEmbeddings, Fireworks
 from dotenv import load_dotenv
+from typing import Optional, List, Dict
+import unicodedata
 
 load_dotenv(".env")
 
-# Función para actualizar dinámicamente el modelo del model_wrapper
+# Funcion para actualizar dinamicamente el modelo del model_wrapper
 def update_model(model_name: str, temperature: float) -> Fireworks:
     """
     Actualiza el model_wrapper con el nuevo modelo y temperatura seleccionados.
@@ -16,12 +18,12 @@ def update_model(model_name: str, temperature: float) -> Fireworks:
         max_tokens=400
     )
 
-# Cargar Fireworks Embeddings para la recuperación de documentos
+# Cargar Fireworks Embeddings para la recuperacion de documentos
 embedding_model = FireworksEmbeddings(
     model=os.getenv("FIREWORKS_EMBEDDING_MODEL")
 )
 
-# Configurar ChromaDB para almacenamiento y recuperación de documentos
+# Configurar ChromaDB para almacenamiento y recuperacion de documentos
 chroma_client = chromadb.PersistentClient(path=os.getenv("CHROMA_PATH"))
 collection = chroma_client.get_collection(os.getenv("DB_NAME"))
 
@@ -53,32 +55,90 @@ def retrieve_docs(question: str) -> str:
 
     return "\n\n---\n\n".join(filtered_docs)
 
+def normalize_string(s: str) -> str:
+    """
+    Normaliza una cadena de texto eliminando tildes y convirtiendo a minúsculas.
+    """
+    return unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode('utf-8').lower()
+
 # Clase RAGBot que maneja las inferencias y preguntas
 class RagBot:
     def __init__(self, model, retriever):
         self._model = model
         self._retriever = retriever
 
-    def get_answer(self, question: str):
+    def is_new_topic(self, question: str, last_question: str) -> bool:
+        """
+        Detectar si la nueva pregunta es un cambio de tema respecto a la pregunta anterior.
+        """
+        return normalize_string(question) != normalize_string(last_question)
+
+    def filter_repeated_info(self, new_answer: str, history: List[Dict[str, str]]) -> str:
+        """
+        Filtrar información repetida en base al historial de respuestas anteriores.
+        """
+        for entry in history:
+            previous_answer = entry['answer']
+            # Eliminar las partes de la nueva respuesta que ya se mencionaron antes
+            new_answer = new_answer.replace(previous_answer, "")
+        return new_answer.strip()
+
+    def get_answer(self, question: str, history: Optional[List[Dict[str, str]]] = None):
         """
         Obtener la respuesta basada en la pregunta utilizando el modelo generativo.
         """
+        # Mantener el historial completo
+        history_text = ""
+        if history:
+            for entry in history:
+                history_text += f"Usuario: {entry['question']}\nBot: {entry['answer']}\n"
+
+        # Lista ampliada de preguntas genéricas
+        generic_questions = ["dame más información", "quiero saber más", "continúa", "amplía", 
+                             "más detalles", "puedes decirme más", "cuéntame más", "dame detalles"]
+
+        # Normalizar la pregunta para la comparación
+        normalized_question = normalize_string(question)
+        if normalized_question in [normalize_string(q) for q in generic_questions] and history:
+            last_question = history[-1]['question']
+            # Cambiar el prompt para proporcionar más detalles
+            question = f"Proporciona más detalles sobre: {last_question}. Asegúrate de no repetir información y expande en temas relacionados."
+
+        # Detectar si el tema ha cambiado
+        if history and self.is_new_topic(question, history[-1]['question']):
+            history_text += f"\nNuevo tema detectado. Enfocate en la nueva pregunta: {question}\n"
+
+        # Recuperar los documentos relacionados con la pregunta actualizada
         docs = self._retriever(question)
         if not docs.strip():
-            return "No se encontró información relevante.", ""
+            return "No se encontro informacion relevante.", ""
 
-        prompt = f"""You are an AFP Uno expert. Based on the following information, answer the question concisely and clearly:
-        Information:    
-        {docs}
-        Question: {question}
-        Answer:"""
+        # Prompt actualizado para que el historial no sea dominante
+        prompt = f"""Eres un asistente de AFP UNO que proporciona informacion basada en los documentos proporcionados, tambien debes poder inferir información a partir de estos documentos. Usa el siguiente contexto para responder la pregunta de manera concisa y clara.
+
+Contexto:
+{docs}
+
+Pregunta actual: {question}
+
+Historial de la conversacion:
+{history_text}
+
+Si es relevante, puedes referirte brevemente a interacciones anteriores, pero enfocate en responder la pregunta actual. Proporciona información adicional si es posible, y no repitas información que ya diste anteriormente.
+
+Respuesta:"""
 
         try:
             result = self._model.generate([prompt])
             generated_text = result.generations[0][0].text.strip()
+
+            # Filtrar información repetida
+            if history:
+                generated_text = self.filter_repeated_info(generated_text, history)
+
         except Exception as e:
-            print(f"Error generating response: {e}")
-            generated_text = "Error generating the response."
+            print(f"Error generando la respuesta: {e}")
+            generated_text = "Error al generar la respuesta."
 
         return generated_text, docs
 
@@ -89,17 +149,14 @@ class DefaultBot:
 
     def get_answer(self, question: str):
         """
-        Obtener respuesta basada únicamente en la pregunta, sin contexto adicional.
+        Obtener respuesta basada unicamente en la pregunta, sin contexto adicional.
         """
-        prompt = f"""You are an AFP Uno expert. Answer the question concisely and clearly:
-        Question: {question}
-        Answer:"""
-
+        # Enviar la pregunta directamente al modelo sin prompt adicional
         try:
-            result = self._model.generate([prompt])
+            result = self._model.generate([question])
             generated_text = result.generations[0][0].text.strip()
         except Exception as e:
-            print(f"Error generating response: {e}")
-            generated_text = "Error generating the response."
+            print(f"Error generando la respuesta: {e}")
+            generated_text = "Error al generar la respuesta."
 
         return generated_text
