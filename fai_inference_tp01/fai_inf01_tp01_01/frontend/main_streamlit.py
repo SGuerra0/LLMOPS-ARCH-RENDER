@@ -6,28 +6,30 @@ import uuid
 # URLs de las APIs
 API_URL_RAG = "http://127.0.0.1:8000/get_answer"
 API_URL_DEFAULT = "http://127.0.0.1:8000/get_default_answer"
-CSS_PATH = "static/style.css"  # Ruta del CSS
+CSS_PATH = os.path.join(os.getcwd(), 'fai_inference_tp01', 'fai_inf01_tp01_01', 'frontend', 'static', 'style.css')  # Ruta del CSS
 
-# Configuracion de la pagina
+# Configuración de la página
 st.set_page_config(page_title="UnoAfp GPT", page_icon=":robot_face:", layout="centered")
 
 # Leer el archivo CSS
-with open(CSS_PATH, "r") as css_file:
-    css_content = css_file.read()
+try:
+    with open(CSS_PATH, "r") as css_file:
+        css_content = css_file.read()
+    # Inyectar el CSS en la app
+    st.markdown(f"<style>{css_content}</style>", unsafe_allow_html=True)
+except FileNotFoundError:
+    st.error(f"El archivo CSS no se encontró en la ruta: {CSS_PATH}")
 
-# Inyectar el CSS en la app
-st.markdown(f"<style>{css_content}</style>", unsafe_allow_html=True)
-
-# Cargar el logo y alinearlo con el titulo en la misma fila
-logo_path = "static/unoafp_logo.png"
+# Cargar el logo y alinearlo con el título en la misma fila
+logo_path = os.path.join(os.getcwd(), 'fai_inference_tp01', 'fai_inf01_tp01_01', 'frontend', 'static', 'unoafp_logo.png')
 col1, col2 = st.columns([1, 4])
 with col1:
     st.image(logo_path, width=100)
 with col2:
     st.markdown('<div class="main-title">UNO AFP GPT</div>', unsafe_allow_html=True)
 
-# Descripcion inicial
-st.write("**Elige la configuracion del modelo para generar la respuesta.**")
+# Descripción inicial
+st.write("**Elige la configuración del modelo para generar la respuesta.**")
 
 # Inicializar variables en session_state
 if 'selected_model' not in st.session_state:
@@ -39,7 +41,7 @@ if 'history' not in st.session_state:
 if 'session_id' not in st.session_state:
     st.session_state.session_id = str(uuid.uuid4())
 
-# Crear columnas para los botones de configuracion, centrados en la pantalla
+# Crear columnas para los botones de configuración, centrados en la pantalla
 config_col1, config_col2, _ = st.columns([1, 1, 2])
 with config_col1:
     if st.button("RAG", use_container_width=True):
@@ -70,11 +72,11 @@ model_name = st.selectbox("Modelos disponibles", list(model_options.keys()))
 # Obtener la ruta del modelo seleccionado
 model_option = model_options[model_name]
 
-# Mostrar el historial de conversacion
+# Mostrar el historial de conversación
 if st.session_state.history:
-    # Titulo del historial con fondo negro y texto blanco
+    # Título del historial con fondo negro y texto blanco
     st.markdown(
-        '<div class="history-title">Historial de la conversacion</div>',
+        '<div class="history-title">Historial de la conversación</div>',
         unsafe_allow_html=True
     )
     for entry in st.session_state.history:
@@ -101,7 +103,7 @@ if submit_button:
     if user_input.strip():
         with st.spinner(f'Generando respuesta con el modelo {st.session_state.selected_model}...'):
             try:
-                # Seleccionar la URL segun el modelo configurado
+                # Seleccionar la URL según el modelo configurado
                 api_url = API_URL_RAG if st.session_state.selected_model == "RAG" else API_URL_DEFAULT
 
                 # Preparar el historial para enviar (lista de diccionarios con 'question' y 'answer')
@@ -122,7 +124,7 @@ if submit_button:
                 if response.status_code == 200:
                     data = response.json()
 
-                    # Agregar la nueva interaccion al historial
+                    # Agregar la nueva interacción al historial
                     st.session_state.history.append({
                         'question': user_input,
                         'answer': data.get("answer", "No se obtuvo respuesta.")
@@ -157,11 +159,11 @@ if submit_button:
                     st.error(f"Error {response.status_code}: {error_detail}")
 
             except requests.exceptions.ConnectionError:
-                st.error("No se pudo conectar con la API. Asegurate de que el backend esta corriendo.")
+                st.error("No se pudo conectar con la API. Asegúrate de que el backend está corriendo.")
             except Exception as e:
-                st.error(f"Ocurrio un error: {e}")
+                st.error(f"Ocurrió un error: {e}")
     else:
-        st.warning("Por favor, ingresa una pregunta valida.")
+        st.warning("Por favor, ingresa una pregunta válida.")
 
-# Pie de pagina
+# Pie de página
 st.markdown('<div class="footer">Desarrollado por Platwave | 2024</div>', unsafe_allow_html=True)
