@@ -1,0 +1,98 @@
+[
+    {
+        "input": "Se parte de UNO",
+        "output": "¿Por qué ser parte de UNO?Porque ganar más lucas hoy #EstaenUno. Tenemos una comisión hasta casi 3 veces más baja que otras afp (0,49%) y esto te permite ahorrar hasta 300 lucas al año! Te descontamos menos, para que tú ganes más. En UNO, puedes recibir un mayor sueldo todos los meses y ahorrar tranquilo para tu futuro.¿Por qué UNO me conviene? ¿Cómo calculo cuántas lucas más ahorro?Porque en UNO tenemos una comisión hasta casi 3 veces más baja que otras AFP, 0,49%, por lo que te descontamos menos de tu sueldo para que tú ganes más. Si quieres calcular cuántas lucas más ahorras, entra a nuestroSimulador de Costos.Es mi primera pega, ¿cómo puedo ser parte de UNO?Es muy fácil! Sigue elpaso a pasoy te guiaremos para que seas parte de UNO. También lo puedes hacer en una denuestras sucursales.¿Cómo sé si ya estoy afiliado y en qué AFP estoy?Simple, ingresa a la Superintendencia de Pensiones (SP) y averiguaen qué AFP estás.No trabajo, pero igual quiero ser parte de UNO, ¿puedo?Sí, puedes! Si nunca has cotizado en una afp, ingresa en el siguientelinky puedes empezar a ser parte de UNO.Soy extranjero y quiero ser parte de UNO, ¿cómo lo hago?Si ya tienes tu RUT chileno, te puedes incorporar en el siguientelink.Si aún no tienes RUT, te daremos un Número de Identificación de Cotizaciones (NIC) . El único requisito para el proceso es tener un contrato vigente en el país. Ingresa en el siguientelinky sé parte de UNO!",
+        "metadata": {
+            "type": "collapse_content",
+            "source_url": "https://www.uno.cl/ayuda/preguntas-frecuentes"
+        }
+    },
+    {
+        "input": "Ley de Protección al Empleo",
+        "output": "¿Qué es la Ley de Protección al Empleo?Es un beneficio estatal que ayudará a proteger los empleos frente a esta crisis sanitaria que estamos enfrentando. Se aplica bajo 3 causales y permite la activación del seguro de cesantía entre otras cosas. Entérate de todos los detallesaquí",
+        "metadata": {
+            "type": "collapse_content",
+            "source_url": "https://www.uno.cl/ayuda/preguntas-frecuentes"
+        }
+    },
+    {
+        "input": "Extranjeros",
+        "output": "Soy extranjero y no tengo RUT chileno, ¿Cómo me uno a UNO?Lo primero que debes considerar es que debes tener un contrato en Chile y pasaporte vigente.Luego debes solicitar tu Número de Identificación para Cotizaciones (NIC)aquíy completar el formulario, adjuntando el contrato y copia del pasaporte.Podrás tener el NIC de manera inmediata, el que deberás informar a tu empleador para que pueda empezar a pagar tus cotizaciones.",
+        "metadata": {
+            "type": "collapse_content",
+            "source_url": "https://www.uno.cl/ayuda/preguntas-frecuentes"
+        }
+    },
+    {
+        "input": "Sobre las Claves",
+        "output": "¿Qué es y para qué me sirve la Clave de Acceso?Es una clave de 4 números que permite entrar a tu cuenta personal enUNOnline, donde puedes modificar tus datos, obtener certificados, revisar cartolas, entre otros. Para obtenerla es muy fácil. Te ayudamos!¿Cómo crear mi Clave de Acceso?Haz click enUNOnlineSelecciona la opción \"crea o recupera tu clave\"Para continuar, escribe los datos solicitados: RUT y Número de documento de la Cédula de Identidad.Luego responde tres preguntas que permitirán validar tu identidad y continúa.Escribe una nueva clave de 4 números y marca \"crear\"Listo! Ya tienes acceso a tu portal UNOnline¿Cómo recuper mi Clave de Acceso?Haz click enUNOnliney seleccionar la opción \"crea o recupera tu clave\".Para continuar, escribe tu RUT.Selecciona la forma en que quieres recuperar tu clave, puede ser vía mail o respondiendo las preguntas de seguridad. (Si es vía mail, revisa tu correo, haz click en el enlace “nueva clave” e ingresa la nueva contraseña de 4 números. Si es vía preguntas, deberás tener a mano tu cédula de identidad y responder 3 preguntas).Ingresa tu nueva clave de 4 números y listo! Tu nueva clave ha sido creada.¿Qué es la Clave de Seguridad?Es una clave distinta a la Clave de Acceso, alfanumérica y debes tenerla para hacer distintas transacciones como contratar productos voluntarios, hacer cambios de fondo.¿Cómo creo mi Clave de Seguridad?Haz click enUNOnline.Seleccionar “Crear Clave”.Lee y acepta las condiciones del \"Contrato de Prestación de Servicios Previsionales Remotos\".En tu correo registrado recibirás una copia y número del contrato.En el paso siguiente, ingresa el número del contrato enviado al mail y escribe tu nueva clave de seguridad de seis a 10 dígitos (alfanumérica).Para finalizar, debes crear una pregunta de seguridad y su respectiva respuesta.¿Cómo recupero mi Clave de Seguridad?Haz click enUNOnline.Marca “Clave de Seguridad”Te dará dos opciones: a) por pregunta de seguridad. b) número de contrato.Si eliges la primera, escribe la pregunta y la respuesta, previamente ingresada al momento de crear tu clave por primera vez. Si eliges la segunda, ingresa tu número de contrato y digita tu nueva clave de seguridad.",
+        "metadata": {
+            "type": "collapse_content",
+            "source_url": "https://www.uno.cl/ayuda/preguntas-frecuentes"
+        }
+    },
+    {
+        "input": "Certificados",
+        "output": "¿Cómo pido un certificado a través de la página web?Entra a tu UNOnline con tu Clave de Acceso, visita la sección Certificados y descarga el certificado que estás buscando. No tienen ningún costo asociado.¿Qué tipo de certificados se pueden descargar?Cotizaciones, que muestra todas las cotizaciones pagadas por tu empleador. Se utiliza habitualmente para el pago de licencias médicas, tramitaciones de créditos y temas comerciales.Antecedentes previsionales, que permite saber cuánta plata tienes en UNO y sirve para tramitar créditos.Afiliación, con este certificado se acredita que eres parte de UNO y generalmente es usado para pago de licencias médicas o becas escolares.",
+        "metadata": {
+            "type": "collapse_content",
+            "source_url": "https://www.uno.cl/ayuda/preguntas-frecuentes"
+        }
+    },
+    {
+        "input": "Multifondos",
+        "output": "¿Qué son los multifondos?Los multifondos son las 5 alternativas que ofrece el Sistema de Pensiones para que inviertas tus ahorros. Estos sirven tanto para los aportes obligatorios como los voluntarios que hagas en tu AFP. Los fondos se llaman A, B, C, D y E y cada letra representa un nivel de riesgo distinto. El A es el más riesgoso, ya que se invierte un mayor porcentaje en renta variable, y el E el más conservador, ya que se invierte un mayor porcentaje en renta fija.¿Me puedo cambiar de fondo?Sí! Puedes cambiarte cuantas veces quieras. Sólo tienes que entrar aUNOnliney clikear en el menú de la izquierda \"Cambios de Fondo\".¿Por qué mi Cambio o Distribución de Fondos puede demorar más tiempo?Tus solicitudes de cambios o distribución de fondos se verán reflejados al 4to día hábil. Sin embargo, en caso que se generen movimientos masivos de fondo y la suma de los montos supere el 5% del patrimonio de este, se realizará el cambio de manera gradual. Dado esto, tu solicitud ingresará a un proceso de entrada y salida por orden de ingreso (primero en ingresar, primero en salir). Para conocer más en detalle la normativa que regula los Cambios y Distribuciones de Fondos, te invitamos a visitar el Sitio Web de la Superintendencia.¿Qué fondo me conviene?Depende de tu edad y sexo, pero nuestra recomendación es la siguiente:Fondo A – Más riesgosoEs el fondo con mayor rentabilidad esperada en el largo plazo, porque tiene la mayor proporción de sus inversiones en renta variable. Sin embargo, sus resultados de corto plazo son más inciertos, es decir, es más riesgoso, por lo que podría presentar pérdidas en el corto plazo.Fondo B – RiesgosoEs un fondo riesgoso, porque sus inversiones tienen una alta proporción de renta variable. Esto permite obtener más rentabilidad esperada de largo plazo que los fondos C, D y E, pero asumiendo un mayor nivel de riesgo.Fondo C – IntermedioEs un fondo intermedio, porque tiene proporción similar entre renta fija y renta variable. Esto significa que busca balancear el impacto de la rentabilidad versus el riesgo de sus inversiones.Fondo D – ConservadorEs un fondo conservador, porque sus inversiones tienen una alta proporción de renta fija. Esto significa que entrega una menor rentabilidad esperada de largo plazo que los fondos A, B y C, pero asumiendo un menor nivel de riesgo.Fondo E – Más conservadorEs el más estable y seguro, porque tiene la mayor proporción de sus inversiones en renta fija. Esto significa que tiene una menor rentabilidad esperada de largo plazo, pero es menos riesgoso, por lo que es poco probable que presente pérdidas en el corto plazo.",
+        "metadata": {
+            "type": "collapse_content",
+            "source_url": "https://www.uno.cl/ayuda/preguntas-frecuentes"
+        }
+    },
+    {
+        "input": "Trabajo por mi propia cuenta",
+        "output": "¿Cómo y dónde puedo pagar mis cotizaciones obligatorias?Primero debes descargar la planilla de pagos desdewww.previred.com, completarla y luego pagarla vía web o en cualquiera de las sucursales dewww.servipag.cl. Recuerda que puedes cancelar tus cotizaciones hasta el último día hábil del mes siguientes a cancelar.Si pago mis cotizaciones, ¿tengo derecho a cobertura de salud?Para tener este derecho, necesitas contar con 1 cotización registrada en UNO y el sexto mes debes presentar en Fonasa el certificado de cotizaciones actualizado.",
+        "metadata": {
+            "type": "collapse_content",
+            "source_url": "https://www.uno.cl/ayuda/preguntas-frecuentes"
+        }
+    },
+    {
+        "input": "Pensionado",
+        "output": "Quieres realizar un trámite y no puedes ir a una sucursal ¿Qué puedo hacer?Escríbenos y un ejecutivo se contactará contigo para ayudarte, ingresaaquí.Estoy pensionado y sigo trabajando ¿Tengo que cotizar?No es obligatorio que lo hagas, sin embargo, puedes hacerlo si es que quieres! Para esto, tienes que informarle a quién te contrató y a UNO.Soy mujer mayor de 60 años, no estoy pensionada y sigo trabajando, ¿Tengo que cotizar?En tu caso, quién te contrató tiene la obligación a hacer la cotización completa (10% para tu Cuenta Individual, 0,49% de comisión para UNO y 1,37% de seguro de Invalidez y Sobrevivencia) hasta que cumplas 65 años. Una vez que cumplas esta edad, quien te contrató está obligado a retener solo la cotización diferenciada (10% para tu Cuenta Individual). Eso sí, tú puedes pedir que no te sigan cotizando. Para esto, tienes que informar por escrito a UNO y a quien te contrató. Ten presente que con esto renuncias a la cobertura del Seguro de Invalidez y SobrevivenciaSoy hombre mayor de 65 años, no estoy pensionada y sigo trabajando, ¿Tengo que cotizar?Quien te contrató está obligado a retener sólo la cotización diferenciada (10% para tu Cuenta Individual). Eso si, tu puedes pedir que no te sigan cotizando. Para esto, tienes que informar por escrito a UNO y a quien te contrató. Ten presente que con esto renuncias a la cobertura del Seguro de Invalidez y Sobrevivencia",
+        "metadata": {
+            "type": "collapse_content",
+            "source_url": "https://www.uno.cl/ayuda/preguntas-frecuentes"
+        }
+    },
+    {
+        "input": "Rezagos",
+        "output": "¿Qué son los rezagos?Se les llaman rezagos a las cotizaciones, depósitos o aportes que por distintos motivos no se pudieron abonar en las cuentas personales de los afiliados.¿Por qué se generan?Se producen generalmente porque:Quien te contrató hace los pagos en una AFP que no es la tuya.Al escribir tus datos en la planilla de pago, tu empleador comete errores, lo que hace difícil identificar al trabajador para abonar sus saldos.Hay una equivocación en la AFP de afiliación, cuando te has cambiado de administradora.¿Cómo sé si tengo rezagos?Puedes revisar con tu RUT y clave de AFP enwww.sontuslucas.cl.Encontrarás el detalle de tu historial, verás qué periodos no tienes cotizados y si corresponden a un rezago.¿Cómo se recuperan los rezagos?Una vez que notaste que habían rezagos, enwww.sontuslucas.clpuedes leventar tu caso para que UNO lo analice y hagamos las gestiones necesarias para devolverte tus lucas.",
+        "metadata": {
+            "type": "collapse_content",
+            "source_url": "https://www.uno.cl/ayuda/preguntas-frecuentes"
+        }
+    },
+    {
+        "input": "Productos de Ahorro Voluntario",
+        "output": "¿Qué es el Ahorro Previsional Voluntario (APV)?El Ahorro Previsional Voluntario (APV) son las lucas que decides destinar para aumentar tu ahorro obligatorio, así puedes mejorar o anticipar tu pensión. Tú decides cuál es el monto que quieres ahorrar, en qué fondo lo vas a invertir y cuándo lo quieres sacar de tu cuenta.Si necesitas más información, revisa en nuestra sección deproductos.¿Puedo tener un APV en UNO?Sí! Es muy fácil. Si eres parte de UNO, solo tienes que contratarla en tuUNOnlinecon tu clave de seguridad y seguir las indicaciones.¿Qué es la Cuenta 2?Si necesitas más información, revisa en nuestra sección deproductos",
+        "metadata": {
+            "type": "collapse_content",
+            "source_url": "https://www.uno.cl/ayuda/preguntas-frecuentes"
+        }
+    },
+    {
+        "input": "Otras preguntas frecuentes",
+        "output": "Información dirigida a empleadores¿Cómo sé si mi empleador pagó mis cotizaciones en UNO?Muy fácil! Entra a tuUNOnliney revisa tu Certificado de Cotizaciones.¿Qué imposiciones debo pagarle a las y los trabajadores de casa particular?Para las y los trabajadoras de casa particular, ya sea chilenos o extranjeros, deberás pagarles:el 10% del sueldo como cotizaciones obligatoriasel 0,49% de comisión para UNOel 2,01% si el trabajador es hombre y 1,37% si la trabajadora es mujer, correspondiente al Seguro de Invalidez y Sobrevivenciael 4,11% de Cuenta de IndemnizaciónInformación dirigida al afiliadoEvaluación de comisión y rentabilidadSi estas iniciando tu vida laboral y llevas menos de 24 meses cotizando y deseas hacer una evaluación de tu cuenta sobre tu Comisión y Rentabilidad puedes solicitar la evaluación haciendo clic en el siguiente enlace:haz clic aquí",
+        "metadata": {
+            "type": "collapse_content",
+            "source_url": "https://www.uno.cl/ayuda/preguntas-frecuentes"
+        }
+    },
+    {
+        "input": "Retiro 10%",
+        "output": "¿Cómo puedo hacer mi retiro del 10%?Muy fácil! ingresaaquíy completa el formulario.¿Necesitas más información sobre el Retiro?Ingresaaquíy entérate de todo lo relacionado sobre tu retiro.",
+        "metadata": {
+            "type": "collapse_content",
+            "source_url": "https://www.uno.cl/ayuda/preguntas-frecuentes"
+        }
+    }
+]

@@ -1,0 +1,299 @@
+[
+    {
+        "id": "p_2",
+        "input": "Fondos",
+        "output": "Los multifondos son las5 alternativas que ofrece el Sistema de Pensionespara que inviertas tus ahorros. Estos sirven tanto para los aportes obligatorios como los voluntarios que hagas en tu AFP. Los fondos se llaman A, B, C, D y E y cada letra representa un nivel de riesgo distinto. El A es el más riesgoso, ya que se invierte un mayor porcentaje en renta variable, y el E el más conservador, ya que se invierte un mayor porcentaje en renta fija.",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "p_3",
+        "input": "Fondos",
+        "output": "Fondo A – Más riesgosoEs el fondo con mayor rentabilidad esperada en el largo plazo, porque tiene la mayor proporción de sus inversiones en renta variable. Sin embargo, sus resultados de corto plazo son más inciertos, es decir, es más riesgoso, por lo que podría presentar pérdidas en el corto plazo.",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "p_4",
+        "input": "Fondos",
+        "output": "Fondo B – RiesgosoEs un fondo riesgoso, porque sus inversiones tienen una alta proporción de renta variable. Esto permite obtener más rentabilidad esperada de largo plazo que los fondos C, D y E, pero asumiendo un mayor nivel de riesgo.",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "p_5",
+        "input": "Fondos",
+        "output": "Fondo C – IntermedioEs un fondo intermedio, porque tiene proporción similar entre renta fija y renta variable. Esto significa que busca balancear el impacto de la rentabilidad versus el riesgo de sus inversiones.",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "p_6",
+        "input": "Fondos",
+        "output": "Fondo D – ConservadorEs un fondo conservador, porque sus inversiones tienen una alta proporción de renta fija. Esto significa que entrega una menor rentabilidad esperada de largo plazo que los fondos A, B y C, pero asumiendo un menor nivel de riesgo.",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "p_7",
+        "input": "Fondos",
+        "output": "Fondo E – Más conservadorEs el más estable y seguro, porque tiene la mayor proporción de sus inversiones en renta fija. Esto significa que tiene una menor rentabilidad esperada de largo plazo, pero es menos riesgoso, por lo que es poco probable que presente pérdidas en el corto plazo.",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "p_8",
+        "input": "Fondos",
+        "output": "Instrumentos de renta variable",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "p_9",
+        "input": "Fondos",
+        "output": "Principalmente son acciones emitidas por empresas.",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "p_10",
+        "input": "Fondos",
+        "output": "Instrumentos de renta fija",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "p_11",
+        "input": "Fondos",
+        "output": "Existen una variedad de instrumentos como son los emitidos por el Banco Central, Depósitos en los Bancos, Letras hipotecarias, Bonos.",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "p_12",
+        "input": "Fondos",
+        "output": "La Superintendencia de Pensiones establece el Régimen de Inversión que determina los límites de inversión según lo siguiente:",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "p_13",
+        "input": "Fondos",
+        "output": "Para tus ahorros puedes elegirhasta dos fondos.",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "p_14",
+        "input": "Fondos",
+        "output": "Debes definircuánto riesgote gustaría tomar.",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "p_15",
+        "input": "Fondos",
+        "output": "Eres tú quien eligeel fondo en el que quieres estar.",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "p_16",
+        "input": "Fondos",
+        "output": "En las cuentas obligatorias, existen algunas restricciones legales a la hora de elegir los fondos donde inviertes tus lucas. Estas son:",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "p_18",
+        "input": "Fondos",
+        "output": "Si estás empezando a trabajar, generalmente las personas escogen los fondos de mayor riesgo, a largo plazo pueden obtener mayor rentabilidad.",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "p_19",
+        "input": "Fondos",
+        "output": "Si estás cerca de pensionarte (hombre 65 años y mujer 60 años), las personas escogen los fondos de menor riesgo, que tienen menor riesgo de sufrir pérdidas.",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "p_21",
+        "input": "Fondos",
+        "output": "Síguenos en :",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "p_22",
+        "input": "Fondos",
+        "output": "Entrega tu opinión a la Superintendencia de Pensiones sobre la calidad de servicio de tu AFP,comienza aquí.",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "p_23",
+        "input": "Fondos",
+        "output": "© Todos los derechos reservados UNO afp 2024",
+        "metadata": {
+            "type": "paragraph",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "tr_1",
+        "input": "Fondos",
+        "output": "Límite máximo permitidoLímite mínimo obligatorio",
+        "metadata": {
+            "type": "table_row",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "tr_2",
+        "input": "Fondos",
+        "output": "Fondo A(más riesgoso)80%40%",
+        "metadata": {
+            "type": "table_row",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "tr_3",
+        "input": "Fondos",
+        "output": "Fondo B(riesgoso)60%25%",
+        "metadata": {
+            "type": "table_row",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "tr_4",
+        "input": "Fondos",
+        "output": "Fondo C(intermedio)40%15%",
+        "metadata": {
+            "type": "table_row",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "tr_5",
+        "input": "Fondos",
+        "output": "Fondo D(conservador)20%5%",
+        "metadata": {
+            "type": "table_row",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "tr_6",
+        "input": "Fondos",
+        "output": "Fondo E(más conservador)5%0%",
+        "metadata": {
+            "type": "table_row",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "tr_7",
+        "input": "Fondos",
+        "output": "FondoMujeresHombres",
+        "metadata": {
+            "type": "table_row",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "tr_8",
+        "input": "Fondos",
+        "output": "Hasta 50 añosMás de 51 añosHasta 55 añosMás de 56 años",
+        "metadata": {
+            "type": "table_row",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "tr_9",
+        "input": "Fondos",
+        "output": "Fondo A(más riesgoso)",
+        "metadata": {
+            "type": "table_row",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "tr_10",
+        "input": "Fondos",
+        "output": "Fondo B(riesgoso)",
+        "metadata": {
+            "type": "table_row",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "tr_11",
+        "input": "Fondos",
+        "output": "Fondo C(intermedio)",
+        "metadata": {
+            "type": "table_row",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "tr_12",
+        "input": "Fondos",
+        "output": "Fondo D(conservador)",
+        "metadata": {
+            "type": "table_row",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    },
+    {
+        "id": "tr_13",
+        "input": "Fondos",
+        "output": "Fondo E(más conservador)",
+        "metadata": {
+            "type": "table_row",
+            "source_url": "https://www.uno.cl/te-puede-interesar/fondos"
+        }
+    }
+]

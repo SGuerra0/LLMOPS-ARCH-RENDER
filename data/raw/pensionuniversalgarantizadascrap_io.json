@@ -1,0 +1,155 @@
+[
+    {
+        "id": "collapse_content_1",
+        "input": "¿Qué institución debe, por ley, pagar la Pensión Garantizada Universal?",
+        "output": "A partir de junio de 2022, el Instituto de Previsión Social (IPS) será el organismo encargado de pagar la Pensión Garantizada Universal (PGU) a quienes reciben una pensión en cualquier AFP.",
+        "metadata": {
+            "source_url": "https://www.uno.cl/te-puede-interesar/pension-garantizada-universal",
+            "class": "ant-collapse-content-box"
+        }
+    },
+    {
+        "id": "collapse_content_2",
+        "input": "¿Qué cambios habrá en el pago de la PGU para los pensionados de las AFP desde junio de 2022?",
+        "output": "En el caso de las personas que hoy reciben una pensión de alguna AFP junto con la PGU, desde junio el pago de lo correspondiente a la PGU lo realizará el IPS. Esto, a través de depósito en cuenta -si la o el pensionado tiene esa modalidad de cobro- o de las empresas pagadoras que el IPS tiene contratadas: Caja Los Héroes o BancoEstado, según corresponda.En resumen, los pensionados seguirán recibiendo su pensión de la AFP, mientras que la PGU se las pagará el IPS.",
+        "metadata": {
+            "source_url": "https://www.uno.cl/te-puede-interesar/pension-garantizada-universal",
+            "class": "ant-collapse-content-box"
+        }
+    },
+    {
+        "id": "collapse_content_3",
+        "input": "¿Cómo recibiré la PGU si cobro mi pensión a través de depósito bancario?",
+        "output": "Las personas que tengan la PGU, también la recibirán a través de depósito en la misma cuenta donde hoy depositan la pensión de la AFP, el mismo día.",
+        "metadata": {
+            "source_url": "https://www.uno.cl/te-puede-interesar/pension-garantizada-universal",
+            "class": "ant-collapse-content-box"
+        }
+    },
+    {
+        "id": "collapse_content_4",
+        "input": "¿Dónde y cómo se me pagará la PGU desde junio de 2022?",
+        "output": "Para quienes reciben su Pensión Garantizada Universal (PGU) junto con la pensión de UNO afp, el IPS ha organizado el pago de la PGU de la siguiente manera:Caso 1:Personas que reciben pagos por depósito bancario:Todas las personas que reciben el pago de su pensión de AFP o compañía de seguros y de la PGU por depósito bancario, recibirán ambos pagos en su misma cuenta y el mismo día. No deberán hacer ningún nuevo trámite.Caso 2:Pagos presenciales en Caja Los Héroes o BancoEstado:En el caso de las personas que cobran presencialmente la pensión de su AFP en Caja Los Héroes o BancoEstado, recibirán ambos pagos (pensión y PGU) en el mismo lugar y en la misma fecha que ya tienen fijada.Caso 3:Pagos presenciales en instituciones diferentes de Caja Los Héroes o BancoEstado:En el caso de las personas que cobran presencialmente la pensión de su AFP o compañía de seguros en instituciones diferentes a Caja Los Héroes o BancoEstado, el IPS le pagará la PGU en la sucursal BancoEstado o BancoExpress más cercana, en la misma fecha que tienen fijada para el cobro de su pensión. Por ejemplo, si la persona cobra su pensión de AFP en Servipag, en este caso la PGU la podrá cobrar el mismo día en BancoEstado.",
+        "metadata": {
+            "source_url": "https://www.uno.cl/te-puede-interesar/pension-garantizada-universal",
+            "class": "ant-collapse-content-box"
+        }
+    },
+    {
+        "id": "collapse_content_5",
+        "input": "¿Cómo recibiré la PGU si cobro mi pensión presencialmente a través de Servipag?",
+        "output": "En este caso, podrás cobrar tu PGU en BancoEstado el mismo día en que en la actualidad cobras tu pensión en Servipag.",
+        "metadata": {
+            "source_url": "https://www.uno.cl/te-puede-interesar/pension-garantizada-universal",
+            "class": "ant-collapse-content-box"
+        }
+    },
+    {
+        "id": "collapse_content_6",
+        "input": "¿Puedo cambiar la forma de pago de mi pensión para mis próximos cobros? ¿Por ejemplo, pasar de pago presencial a depósito bancario?",
+        "output": "Sí, pero tienes que solicitarlo directamente a través de tu sitio privado en UNO.cl o contactándonos a través de nuestros distintos canales de atención.",
+        "metadata": {
+            "source_url": "https://www.uno.cl/te-puede-interesar/pension-garantizada-universal",
+            "class": "ant-collapse-content-box"
+        }
+    },
+    {
+        "id": "collapse_content_7",
+        "input": "Si no tengo la PGU, ¿puedo acceder a ella?",
+        "output": "Para acceder a la PGU deberás cumplir determinados requisitos. Si actualmente no tienes este beneficio, puedes revisar si cumples con ellos en www.chileatiende.cl o en www.ips.gob.cl, para luego solicitarla a través de esos mismos sitios. La PGU también se puede solicitar directamente en el IPS, en tu municipio o en UNO afp.",
+        "metadata": {
+            "source_url": "https://www.uno.cl/te-puede-interesar/pension-garantizada-universal",
+            "class": "ant-collapse-content-box"
+        }
+    },
+    {
+        "id": "collapse_content_8",
+        "input": "¿Dónde puedo obtener más información sobre la PGU?",
+        "output": "En caso de dudas sobre el pago de la PGU, puedes informarte en www.chileatiende.cl, en www.ips.gob.cl, a través del Call Center 101 o en las redes sociales ChileAtiende del IPS.",
+        "metadata": {
+            "source_url": "https://www.uno.cl/te-puede-interesar/pension-garantizada-universal",
+            "class": "ant-collapse-content-box"
+        }
+    },
+    {
+        "id": "collapse_content_9",
+        "input": "¿A quién beneficia la Pensión Garantizada Universal (PGU)?",
+        "output": "A todas las personas mayores de 65 años que sigan trabajando o aquellas que tengan una pensión menor a $1.000.000, y que cumplan con los requisitos establecidos en la Ley.También, podrán acceder a este beneficio aquellas personas que reciben una Pensión de Invalidez y los menores de 18 años que tienen discapacidad severa.",
+        "metadata": {
+            "source_url": "https://www.uno.cl/te-puede-interesar/pension-garantizada-universal",
+            "class": "ant-collapse-content-box"
+        }
+    },
+    {
+        "id": "collapse_content_10",
+        "input": "¿Qué requisitos tengo que cumplir para acceder a la Pensión Garantizada Universal (PGU)?",
+        "output": "Todos los beneficiarios recibirán un monto de hasta $206.173 mensualmente si cumple con los siguientes requisitos:Tanto hombres como mujeres deben tener 65 años o más, sin importar si estás trabajando o no. Si quieres seguir trabajando, lo puedes hacer.No pertenecer al 10% más rico de la población.Haber vivido en Chile y acreditar residencia por al menos 20 años, pueden ser seguidos o no, desde que cumpliste 20 años. Además, es necesario haber residido en Chile al menos 4 de los últimos 5 años anteriores a la fecha en que recibirías este beneficio.Recibir una pensión o sueldo menor a $1.000.000.Menores de 65 años que reciben una Pensión de Invalidez y los menores de 18 años que tienen discapacidad física severa siempre y cuando reciban una pensión menor a $1.000.000.",
+        "metadata": {
+            "source_url": "https://www.uno.cl/te-puede-interesar/pension-garantizada-universal",
+            "class": "ant-collapse-content-box"
+        }
+    },
+    {
+        "id": "collapse_content_11",
+        "input": "¿Cuándo se va a pagar la Pensión Garantizada Universal (PGU)?",
+        "output": "Todos los pensionados que actualmente son parte del Pilar Solidario, es decir, que a la fecha reciben la Pensión Básica Solidaria de Vejez (PBS) o el Aporte Previsional Solidario (APS) recibirán el pago de forma automática a partir de febrero de 2022.Quienes no cuentan con alguno de los dos aportes estatales mencionados (es decir, principalmente a las personas que se encuentran en el grupo entre 60% y el 90% de vulnerabilidad) y que califican para la Pensión Garantizada Universal (PGU), se les hará entrega del beneficio el primer día hábil de agosto de 2022.",
+        "metadata": {
+            "source_url": "https://www.uno.cl/te-puede-interesar/pension-garantizada-universal",
+            "class": "ant-collapse-content-box"
+        }
+    },
+    {
+        "id": "collapse_content_12",
+        "input": "¿Cómo se va a pagar la Pensión Garantizada Universal (PGU)?",
+        "output": "Durante los primeros 3 meses de pago, seremos las AFP las encargadas de pagar este beneficio. Desde Mayo de 2022, el ente encargado de pagar este beneficio será el Instituto de Previsión Social (IPS).",
+        "metadata": {
+            "source_url": "https://www.uno.cl/te-puede-interesar/pension-garantizada-universal",
+            "class": "ant-collapse-content-box"
+        }
+    },
+    {
+        "id": "collapse_content_13",
+        "input": "¿Cómo sé si pertenezco o no al 10% más rico de la población?",
+        "output": "Es muy simple, si recibes una pensión o un sueldo superior a $1.000.000 estás dentro del 10% más rico del país, si mensualmente obtienes menos de ese monto calificas para la Pensión Garantizada Universal (PGU).",
+        "metadata": {
+            "source_url": "https://www.uno.cl/te-puede-interesar/pension-garantizada-universal",
+            "class": "ant-collapse-content-box"
+        }
+    },
+    {
+        "id": "collapse_content_14",
+        "input": "¿Es necesario estar pensionado para recibir las lucas de la Pensión Garantizada Universal (PGU)?",
+        "output": "No, todas las personas de 65 años o más que cumplan con los requisitos establecidos en la Ley recibirán la Pensión Garantizada Universal (PGU), aunque se encuentren trabajando. Esto quiere decir que, si postergas tu edad de pensión, puedes seguir acumulando fondos mientras recibes este aporte que entrega el Estado.",
+        "metadata": {
+            "source_url": "https://www.uno.cl/te-puede-interesar/pension-garantizada-universal",
+            "class": "ant-collapse-content-box"
+        }
+    },
+    {
+        "id": "collapse_content_15",
+        "input": "¿Qué pasa si recibo la Pensión Básica Solidaria (PBS) o soy beneficiario del Aporte Previsional Solidario (APS)?",
+        "output": "Ambos beneficios del Pilar Solidario serán reemplazados por la Pensión Garantizada Universal (PGU) y es importante señalar que, si actualmente estás recibiendo estos aportes, no necesitas postular a la Pensión Garantizada Universal (PGU), sino que la recibirás de forma automática en febrero de 2022.",
+        "metadata": {
+            "source_url": "https://www.uno.cl/te-puede-interesar/pension-garantizada-universal",
+            "class": "ant-collapse-content-box"
+        }
+    },
+    {
+        "id": "collapse_content_16",
+        "input": "Si tengo más de una pensión ¿Junto a qué pensión se pagará la PGU?",
+        "output": "El IPS considerará lo siguiente para determinar con qué pensión se pagará la PGU:",
+        "metadata": {
+            "source_url": "https://www.uno.cl/te-puede-interesar/pension-garantizada-universal",
+            "class": "ant-collapse-content-box"
+        }
+    },
+    {
+        "id": "collapse_content_17",
+        "input": "Ejemplos de cómo aplica la Pensión Garantizada Universal (PGU) en distintos casos",
+        "output": "Patricia se encuentra jubilada y todos los meses recibe una pensión autofinanciada, es decir, de los ahorros que juntó en sus años de trabajo, de $200.000. Con el aporte de la Pensión Garantizada Universal (PGU), que es de $206.173, Patricia recibirá todos los meses una pensión de $406.173.Matías actualmente está jubilado y es beneficiario de la Pensión Básica Universal (PBS) que le entrega mensualmente cerca de $165.000. Con la Pensión Garantizada Universal (PGU), la pensión de Matías aumentará hasta los $206.173 todos los meses.Andrea se mantiene activa laboralmente y gana un sueldo mensual líquido de $400.000. Con el aporte de la Pensión Garantizada Universal (PGU), los ingresos mensuales de Andrea serán de $606.173.",
+        "metadata": {
+            "source_url": "https://www.uno.cl/te-puede-interesar/pension-garantizada-universal",
+            "class": "ant-collapse-content-box"
+        }
+    }
+]

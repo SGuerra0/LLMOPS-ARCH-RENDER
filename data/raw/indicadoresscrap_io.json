@@ -1,0 +1,14 @@
+[
+    {
+        "input": "indicadores",
+        "output": "Indicadores FinancierosFecha de actualizaciónValorValor UFjunio 2024$37.571,86Valor UTMjunio 2024$ 65.770IPCjunio 2024-0,1Topes ImponiblesCotizaciones Obligatorias84,3 UFCotización Seguro de Cesantía126,6 UF"
+    },
+    {
+        "input": "indicadores",
+        "output": "Asignación FamiliarTramoAsignación familiarMontoRequisito de renta1 (A)$21.243Renta < ó = $586.2272 (B)$13.036Renta > $586.227 < = $856.2473 (C)$4.119Renta > $856.247 < = $1.335.4504 (D)-Renta > $1.335.450Ingresos MínimosTrabajadores dependientes, independientes y casa particular$500.000Menores de 18 y mayores de 65 años$343.150Para fines no remuneracionales$296.511"
+    },
+    {
+        "input": "indicadores",
+        "output": "Cotización para Trabajos PesadosCalificaciónFinanciamientoPuesto de trabajoEmpleadorTrabajadorTrabajo pesado4%2% R.I.2% R.I.Trabajo menos pesado2%1% R.I.1% R.I.R.I. = Renta Imponible"
+    }
+]

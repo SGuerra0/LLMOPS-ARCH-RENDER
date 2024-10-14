@@ -1,0 +1,50 @@
+[
+    {
+        "input": "PGU: Requisitos, montos y todo lo que tienes que saber",
+        "output": "La Pensión Garantizada Universal (PGU) es un beneficio que se otorga a los adultos mayores de Chile y que busca garantizar un ingreso mínimo para todos los ciudadanos. Esta iniciativa tiene como objetivo mejorar la calidad de vida de las personas mayores de 65 años que cumplan con algunos requisitos. Acá te contaremos los montos, requisitos y todo lo que tienes que saber para optar a este beneficio del Estado en 2023."
+    },
+    {
+        "input": "¿Qué es la PGU?",
+        "output": "La Pensión Garantizada Universal (PGU) es un beneficio estatal, que es pagado mensualmente por el Instituto de Previsión Social (IPS) y al que pueden acceder las personas que tengan 65 años o más, siempre que cumplan con los requisitos legales, independiente de que estén pensionados o todavía no."
+    },
+    {
+        "input": "¿Cuáles son los requisitos para optar a la PGU?",
+        "output": "Para poder acceder a este beneficio del Estado en 2023, existen ciertos requisitos que deben cumplirse. Lo principal es que tienen que ser personas de 65 años o más que: • No integren un hogar perteneciente al 10% con mayores ingresos de la población de mayores de 65 años, de acuerdo con el test de afluencia el cual permite comparar recursos efectivos, tales como los ingresos y/o patrimonio de un individuo o un hogar u otro con algún umbral o corte para efectos de asignar los beneficios.• Tengan residencia en Chile por el lapso no inferior a 20 años, continuos o discontinuos, contados desde el cumplimiento de los 20 años de edad; y, muy importante, haber vivido por cuatro años dentro de los últimos cinco años inmediatamente anteriores a la fecha de postulación.• Cuenten con una pensión base menor a la llamada Pensión Superior, equivalente a $1.114.446."
+    },
+    {
+        "input": "¿Cuál es el monto de la PGU?",
+        "output": "Desde febrero de 2023, para quienes tengan una pensión base menor o igual a $702.101 mensuales, el monto de la Pensión Garantizada Universal ascenderá a $206.173; mientras que para quienes tengan una pensión base mayor (calculada según su PAFE inicial) a $702.101, pero menor a $1.114.446, el monto de la PGU será variable e irá descendiendo proporcionalmente a medida que la pensión se acerca al límite superior."
+    },
+    {
+        "input": "¿Cómo saber si califico para obtener la PGU?",
+        "output": "En el sitio web de ChileAtiende hay una sección donde podrás revisar con tus datos si cumples con los requisitos. Acá te dejamos el enlace directo:https://mi.chileatiende.gob.cl/tramites/102077."
+    },
+    {
+        "input": "¿Dónde postulo a la PGU?",
+        "output": "En el sitio web del IPS (Instituto de Previsión Social) encuentras un apartado donde podrás postular ingresando tu ClaveÚnica que obtienes en el Registro Civil de Chile. Acá te dejamos el enlace directo:https://persona.ipsenlinea.cl/IpsEnLinea/web/ingresoPersonas.jsf"
+    },
+    {
+        "input": "¿Dónde puedo encontrar más información?",
+        "output": "Nosotros te entregamos lo más relevante, pero si necesitas más información puedes visitar el sitio oficial de ChileAtiende que te dejamos aquí:https://www.chileatiende.gob.cl/fichas/102077 Si cumples con los requisitos, no dudes en postular a la PGU y asegurar una pensión mínima para el resto de tu vida. Certifica que cumples con los requisitos y presenta toda la documentación necesaria para obtener la aprobación de este beneficio que entrega el Estado."
+    },
+    {
+        "input": "\"La mejor inversión que puedo hacer es en la educación de mis hijos\". Bill Gates",
+        "output": " La inflación es un fenómeno que en el último tiempo está inquietando a todo el mundo. Ya sea por las secuelas del Covid-19, por el conflicto entre Rusia y Ucrania o por cualquier otro motivo, nos vemos afectados por este tema que no deja de ser preocupante.  Sabemos que no existe una fórmula perfecta para hacer frente a la inflación, pero acá te dejamos el consejo de alguien que sabe cuándo se trata de hablar de lucas. La inflación es un fenómeno económico que implica un aumento general y constante de los precios de los productos y servicios disponibles en una economía. Esto significa que, con el paso del tiempo, el mismo dinero compra menos cosas, lo que tiene un profundo impacto en la vida de las personas. La educación es una inversión que puede ayudar a proteger el poder adquisitivo del dinero y preparar a las personas para un mejor futuro. A medida que las personas adquieren habilidades más específicas que vaya requiriendo el mercado, se irán haciendo más valiosas para las empresas, lo que llevara a obtener nuevas oportunidades de empleo con un gran potencial de aumentar el sueldo. Esto les permitirá mejorar su situación financiera y protegerse contra el impacto de la inflación. Además, la educación también puede ayudar a comprender mejor el mundo económico y tomar decisiones financieras de manera más informada. En resumen, la frase de Bill Gates \"la mejor inversión que puedo hacer es en la educación de mis hijos\", y que en este caso extendemos a educación en general, sin lugar a duda es de las mejores inversiones a largo plazo que puedes hacer. La responsabilidad de tomar buenas decisiones está en UNO."
+    },
+    {
+        "input": "¿Qué es una AFP? ¿Por qué tengo que cotizar en una? Y ¿Cómo sé en qué AFP estoy?",
+        "output": "Todos los trabajadores del país, sean chilenos o extranjeros, por ley deben cotizar una parte de su sueldo en una Administradora de Fondos de Pensiones (AFP). Esas lucas, que mes a mes van a su cuenta personal en la AFP, tienen como fin único el financiar su Pensión de Vejez, Invalidez y Sobrevivencia.  Sigue leyendo porque te contaremos todo lo que necesitas saber acerca del sistema de pensiones en Chile."
+    },
+    {
+        "input": "Qué es una AFP",
+        "output": "Una AFP (Administradora de Fondos de Pensiones) es una institución encargada de administrar los ahorros de los trabajadores pensando en su jubilación en Chile. Desde 1981, el país cuenta con un sistema de capitalización individual que establece la obligatoriedad de estar afiliado a una AFP para tener optar a una pensión en el futuro. También, para acceder a pensiones solidarias te podrán solicitar estar en una afp."
+    },
+    {
+        "input": "Por qué es obligación estar en una AFP en Chile",
+        "output": "Estar afiliado a una AFP es obligatorio porque permite ahorrar para el futuro y garantizar un ingreso mensual en la vejez. Además, al estar afiliado a una AFP, los trabajadores pueden acceder a diversas opciones de inversión como son los multifondos, que van de más riesgoso a menos riesgoso, y que les permiten obtener una mayor rentabilidad de sus ahorros siempre pensando en el largo plazo.Cuánto debo cotizar mensualmente en una AFP en ChileLos trabajadores deben destinar el 10% de su ingreso mensual, ese dinero va íntegramente a su cuenta de capitalización individual de ahorro obligatorio. A ese porcentaje se le suma la comisión que cobra cada AFP por la administración. El porcentaje que cobra cada AFP es distinto, en el caso de UNO afp es de un 0,69% que es hasta un 50% más baja que otras*."
+    },
+    {
+        "input": "Dónde puedo ver en qué AFP estoy",
+        "output": "Para conocer en qué AFP estás afiliado, puedes consultar directamente en tu liquidación mensual que te entrega tu empleador o en el sitio web de la Superintendencia de Pensiones. Es importante estar al tanto de la AFP en la cual estás afiliado ya que esto puede influir en la cantidad de dinero que recibirás en tu sueldo mensual (menos comisión es más dinero en tu sueldo todos los meses) así como también en la rentabilidad que van teniendo tus fondos pensando en el largo plazo. En conclusión, estar afiliado a una AFP en Chile te permite ahorrar para la vejez y garantizar un ingreso mensual en el futuro. Por lo tanto, durante tu vida laboral tienes que estar atento a que tu empleador esté pagando las cotizaciones todos los meses para así evitar lagunas previsionales que pudieran afectar tu jubilación.  *Infórmate sobre la rentabilidad de tu Fondo de Pensiones, las comisiones y la calidad de servicio de las AFP en el sitio web de la Superintendencia de Pensiones www.spensiones.cl."
+    }
+]
