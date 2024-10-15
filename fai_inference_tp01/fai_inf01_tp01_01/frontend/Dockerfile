@@ -4,7 +4,7 @@ FROM python:3.9
 # Establecer el directorio de trabajo en el contenedor
 WORKDIR /app
 
-# Copiar el archivo requirements.txt desde el directorio padre
+# Copiar archivos necesarios desde el directorio padre
 COPY ../requirements.txt /app/requirements.txt
 
 # Instalar las dependencias
