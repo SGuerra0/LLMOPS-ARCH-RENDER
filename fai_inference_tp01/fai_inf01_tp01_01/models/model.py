@@ -8,18 +8,12 @@ import unicodedata
 # Cargar variables de entorno
 load_dotenv(".env")
 
-# Obtener el directorio actual (donde se encuentra 'model.py')
-current_dir = os.path.dirname(os.path.abspath(__file__))
+# Obtener el CHROMA_PATH desde las variables de entorno
+# Si no está definida, asumir que está en un directorio relativo a la ubicación actual
+chroma_path = os.getenv("CHROMA_PATH", "../../../data/universal/chroma.sqlite3")
 
-# Construir la ruta al directorio raíz del proyecto ('LLMops')
-# Retrocediendo tres niveles desde 'model.py'
-project_root = os.path.abspath(os.path.join(current_dir, '..', '..', '..'))
-
-# Construir la ruta completa a 'chroma.sqlite3' desde la raíz del proyecto
-chroma_path = os.getenv(
-    "CHROMA_PATH",
-    os.path.join(project_root, 'data', 'universal', 'chroma.sqlite3')
-)
+# Convertir la ruta en una ruta absoluta para evitar problemas con rutas relativas
+chroma_path = os.path.abspath(chroma_path)
 
 print(f"Ruta de CHROMA_PATH resuelta: {chroma_path}")
 
