@@ -27,7 +27,7 @@ print(f"Ruta de CHROMA_PATH resuelta: {chroma_path}")
 if os.path.exists(chroma_path):
     print("El archivo 'chroma.sqlite3' existe en la ruta resuelta.")
 else:
-    print("El archivo 'chroma.sqlite3' NO existe en la ruta resuelta.")
+    print("El archivo 'chroma.sqlite3' NO existe en la ruta resuelta. Verifica que el archivo esté presente.")
 
 # Inicializar ChromaDB usando la ruta absoluta para la base de datos
 try:
@@ -37,7 +37,7 @@ try:
     print("ChromaDB inicializado correctamente.")
 except Exception as e:
     print(f"Error al inicializar ChromaDB: {e}")
-    collection = None  # Asegurarse de que 'collection' está definido
+    collection = None  # Asegurarse de que 'collection' está definido para evitar errores futuros
 
 # Función para actualizar dinámicamente el modelo del model_wrapper
 def update_model(model_name: str, temperature: float) -> Fireworks:
