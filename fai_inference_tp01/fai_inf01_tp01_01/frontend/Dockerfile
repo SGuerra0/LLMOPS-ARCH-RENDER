@@ -17,4 +17,4 @@ COPY . /app/frontend
 EXPOSE ${PORT}
 
 # Iniciar la aplicación Streamlit
-CMD ["streamlit", "run", "frontend/main_streamlit.py", "--server.port", "${PORT}", "--server.address", "0.0.0.0"]
+CMD streamlit run frontend/main_streamlit.py --server.port ${PORT} --server.address 0.0.0.0
