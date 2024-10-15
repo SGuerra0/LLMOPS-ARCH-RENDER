@@ -3,10 +3,16 @@ import requests
 import os
 import uuid
 
+# Obtener la ruta del directorio donde está ubicado este archivo
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 # URLs de las APIs
 API_URL_RAG = "https://llmops-arch.onrender.com/get_answer"
 API_URL_DEFAULT = "https://llmops-arch.onrender.com/get_default_answer"
-CSS_PATH = os.path.join(os.getcwd(), 'fai_inference_tp01', 'fai_inf01_tp01_01', 'frontend', 'static', 'style.css')  # Ruta del CSS
+
+# Rutas de los archivos estáticos (CSS y logo)
+CSS_PATH = os.path.join(BASE_DIR, 'frontend', 'static', 'style.css')
+LOGO_PATH = os.path.join(BASE_DIR, 'frontend', 'static', 'unoafp_logo.png')
 
 # Configuración de la página
 st.set_page_config(page_title="UnoAfp GPT", page_icon=":robot_face:", layout="centered")
@@ -21,10 +27,12 @@ except FileNotFoundError:
     st.error(f"El archivo CSS no se encontró en la ruta: {CSS_PATH}")
 
 # Cargar el logo y alinearlo con el título en la misma fila
-logo_path = os.path.join(os.getcwd(), 'fai_inference_tp01', 'fai_inf01_tp01_01', 'frontend', 'static', 'unoafp_logo.png')
 col1, col2 = st.columns([1, 4])
 with col1:
-    st.image(logo_path, width=100)
+    try:
+        st.image(LOGO_PATH, width=100)
+    except FileNotFoundError:
+        st.error(f"El archivo de logo no se encontró en la ruta: {LOGO_PATH}")
 with col2:
     st.markdown('<div class="main-title">UNO AFP GPT</div>', unsafe_allow_html=True)
 
