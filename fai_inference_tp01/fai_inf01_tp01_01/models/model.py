@@ -5,7 +5,20 @@ from dotenv import load_dotenv
 from typing import Optional, List, Dict
 import unicodedata
 
+# Cargar variables de entorno
 load_dotenv(".env")
+
+# Definir la ruta correcta del CHROMA_PATH
+# Considerando que la raíz es 'fai_inference_tp01/fai_inf01_tp01_01'
+base_dir = os.path.dirname(os.path.abspath(__file__))  # Obtener el directorio actual
+chroma_path = os.getenv("CHROMA_PATH", os.path.join(base_dir, 'data', 'universal', 'chroma.sqlite3'))
+
+# Inicializar ChromaDB usando la ruta absoluta para la base de datos
+try:
+    chroma_client = chromadb.PersistentClient(path=chroma_path)
+    collection = chroma_client.get_collection(os.getenv("DB_NAME"))
+except Exception as e:
+    print(f"Error al inicializar ChromaDB: {e}")
 
 # Funcion para actualizar dinamicamente el modelo del model_wrapper
 def update_model(model_name: str, temperature: float) -> Fireworks:
@@ -22,10 +35,6 @@ def update_model(model_name: str, temperature: float) -> Fireworks:
 embedding_model = FireworksEmbeddings(
     model=os.getenv("FIREWORKS_EMBEDDING_MODEL")
 )
-
-# Configurar ChromaDB para almacenamiento y recuperacion de documentos
-chroma_client = chromadb.PersistentClient(path=os.getenv("CHROMA_PATH"))
-collection = chroma_client.get_collection(os.getenv("DB_NAME"))
 
 def retrieve_docs(question: str) -> str:
     """
