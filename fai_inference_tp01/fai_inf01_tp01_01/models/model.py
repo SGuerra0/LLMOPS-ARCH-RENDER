@@ -8,19 +8,38 @@ import unicodedata
 # Cargar variables de entorno
 load_dotenv(".env")
 
-# Definir la ruta correcta del CHROMA_PATH
-# Considerando que la raíz es 'fai_inference_tp01/fai_inf01_tp01_01'
-base_dir = os.path.dirname(os.path.abspath(__file__))  # Obtener el directorio actual
-chroma_path = os.getenv("CHROMA_PATH", os.path.join(base_dir, 'data', 'universal', 'chroma.sqlite3'))
+# Obtener el directorio actual (donde se encuentra 'model.py')
+current_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Construir la ruta al directorio raíz del proyecto ('LLMops')
+# Retrocediendo tres niveles desde 'model.py'
+project_root = os.path.abspath(os.path.join(current_dir, '..', '..', '..'))
+
+# Construir la ruta completa a 'chroma.sqlite3' desde la raíz del proyecto
+chroma_path = os.getenv(
+    "CHROMA_PATH",
+    os.path.join(project_root, 'data', 'universal', 'chroma.sqlite3')
+)
+
+print(f"Ruta de CHROMA_PATH resuelta: {chroma_path}")
+
+# Verificar si el archivo 'chroma.sqlite3' existe
+if os.path.exists(chroma_path):
+    print("El archivo 'chroma.sqlite3' existe en la ruta resuelta.")
+else:
+    print("El archivo 'chroma.sqlite3' NO existe en la ruta resuelta.")
 
 # Inicializar ChromaDB usando la ruta absoluta para la base de datos
 try:
     chroma_client = chromadb.PersistentClient(path=chroma_path)
-    collection = chroma_client.get_collection(os.getenv("DB_NAME"))
+    collection_name = os.getenv("DB_NAME", "default_collection")
+    collection = chroma_client.get_collection(name=collection_name)
+    print("ChromaDB inicializado correctamente.")
 except Exception as e:
     print(f"Error al inicializar ChromaDB: {e}")
+    collection = None  # Asegurarse de que 'collection' está definido
 
-# Funcion para actualizar dinamicamente el modelo del model_wrapper
+# Función para actualizar dinámicamente el modelo del model_wrapper
 def update_model(model_name: str, temperature: float) -> Fireworks:
     """
     Actualiza el model_wrapper con el nuevo modelo y temperatura seleccionados.
@@ -31,7 +50,7 @@ def update_model(model_name: str, temperature: float) -> Fireworks:
         max_tokens=400
     )
 
-# Cargar Fireworks Embeddings para la recuperacion de documentos
+# Cargar Fireworks Embeddings para la recuperación de documentos
 embedding_model = FireworksEmbeddings(
     model=os.getenv("FIREWORKS_EMBEDDING_MODEL")
 )
@@ -40,6 +59,10 @@ def retrieve_docs(question: str) -> str:
     """
     Recuperar documentos relevantes basados en la pregunta usando embeddings.
     """
+    if collection is None:
+        print("La colección de ChromaDB no está disponible.")
+        return ""
+
     try:
         query_embedding = embedding_model.embed_query(question)
         results = collection.query(
@@ -47,7 +70,7 @@ def retrieve_docs(question: str) -> str:
             n_results=8
         )
     except Exception as e:
-        print(f"Error retrieving documents: {e}")
+        print(f"Error al recuperar documentos: {e}")
         return ""
 
     # Filtrar documentos basados en el umbral de similitud
@@ -115,25 +138,25 @@ class RagBot:
 
         # Detectar si el tema ha cambiado
         if history and self.is_new_topic(question, history[-1]['question']):
-            history_text += f"\nNuevo tema detectado. Enfocate en la nueva pregunta: {question}\n"
+            history_text += f"\nNuevo tema detectado. Enfócate en la nueva pregunta: {question}\n"
 
         # Recuperar los documentos relacionados con la pregunta actualizada
         docs = self._retriever(question)
         if not docs.strip():
-            return "No se encontro informacion relevante.", ""
+            return "No se encontró información relevante.", ""
 
         # Prompt actualizado para que el historial no sea dominante
-        prompt = f"""Eres un asistente de AFP UNO que proporciona informacion basada en los documentos proporcionados, tambien debes poder inferir información a partir de estos documentos. Usa el siguiente contexto para responder la pregunta de manera concisa y clara.
+        prompt = f"""Eres un asistente de AFP UNO que proporciona información basada en los documentos proporcionados, también debes poder inferir información a partir de estos documentos. Usa el siguiente contexto para responder la pregunta de manera concisa y clara.
 
 Contexto:
 {docs}
 
 Pregunta actual: {question}
 
-Historial de la conversacion:
+Historial de la conversación:
 {history_text}
 
-Si es relevante, puedes referirte brevemente a interacciones anteriores, pero enfocate en responder la pregunta actual. Proporciona información adicional si es posible, y no repitas información que ya diste anteriormente.
+Si es relevante, puedes referirte brevemente a interacciones anteriores, pero enfócate en responder la pregunta actual. Proporciona información adicional si es posible, y no repitas información que ya diste anteriormente.
 
 Respuesta:"""
 
@@ -158,7 +181,7 @@ class DefaultBot:
 
     def get_answer(self, question: str):
         """
-        Obtener respuesta basada unicamente en la pregunta, sin contexto adicional.
+        Obtener respuesta basada únicamente en la pregunta, sin contexto adicional.
         """
         # Enviar la pregunta directamente al modelo sin prompt adicional
         try:
