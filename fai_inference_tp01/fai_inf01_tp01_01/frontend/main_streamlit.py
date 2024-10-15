@@ -4,8 +4,8 @@ import os
 import uuid
 
 # URLs de las APIs
-API_URL_RAG = "http://127.0.0.1:8000/get_answer"
-API_URL_DEFAULT = "http://127.0.0.1:8000/get_default_answer"
+API_URL_RAG = "https://llmops-arch.onrender.com/get_answer"
+API_URL_DEFAULT = "https://llmops-arch.onrender.com/get_default_answer"
 CSS_PATH = os.path.join(os.getcwd(), 'fai_inference_tp01', 'fai_inf01_tp01_01', 'frontend', 'static', 'style.css')  # Ruta del CSS
 
 # Configuración de la página
