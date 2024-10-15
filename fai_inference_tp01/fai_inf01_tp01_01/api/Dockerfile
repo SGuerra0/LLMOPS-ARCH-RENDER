@@ -18,4 +18,4 @@ COPY . /app/api
 EXPOSE ${PORT}
 
 # Iniciar el servidor FastAPI
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "${PORT}"]
+CMD uvicorn main:app --host 0.0.0.0 --port ${PORT}
