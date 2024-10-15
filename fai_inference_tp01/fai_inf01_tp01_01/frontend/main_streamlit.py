@@ -10,9 +10,8 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 API_URL_RAG = "https://llmops-arch.onrender.com/get_answer"
 API_URL_DEFAULT = "https://llmops-arch.onrender.com/get_default_answer"
 
-# Rutas de los archivos estáticos (CSS y logo)
+# Ruta del archivo CSS
 CSS_PATH = os.path.join(BASE_DIR, 'frontend', 'static', 'style.css')
-LOGO_PATH = os.path.join(BASE_DIR, 'frontend', 'static', 'unoafp_logo.png')
 
 # Configuración de la página
 st.set_page_config(page_title="UnoAfp GPT", page_icon=":robot_face:", layout="centered")
@@ -26,15 +25,8 @@ try:
 except FileNotFoundError:
     st.error(f"El archivo CSS no se encontró en la ruta: {CSS_PATH}")
 
-# Cargar el logo y alinearlo con el título en la misma fila
-col1, col2 = st.columns([1, 4])
-with col1:
-    try:
-        st.image(LOGO_PATH, width=100)
-    except FileNotFoundError:
-        st.error(f"El archivo de logo no se encontró en la ruta: {LOGO_PATH}")
-with col2:
-    st.markdown('<div class="main-title">UNO AFP GPT</div>', unsafe_allow_html=True)
+# Mostrar el título centrado
+st.markdown('<div class="main-title" style="text-align: center;">UNO AFP GPT</div>', unsafe_allow_html=True)
 
 # Descripción inicial
 st.write("**Elige la configuración del modelo para generar la respuesta.**")
@@ -114,64 +106,4 @@ if submit_button:
                 # Seleccionar la URL según el modelo configurado
                 api_url = API_URL_RAG if st.session_state.selected_model == "RAG" else API_URL_DEFAULT
 
-                # Preparar el historial para enviar (lista de diccionarios con 'question' y 'answer')
-                history_to_send = [{'question': h['question'], 'answer': h['answer']} for h in st.session_state.history]
-
-                # Preparar el payload para la solicitud
-                payload = {
-                    "question": user_input,
-                    "temperature": temperature,
-                    "model": model_option,
-                    "session_id": st.session_state.session_id,
-                    "history": history_to_send
-                }
-
-                # Hacer una solicitud POST a la API seleccionada
-                response = requests.post(api_url, json=payload)
-
-                if response.status_code == 200:
-                    data = response.json()
-
-                    # Agregar la nueva interacción al historial
-                    st.session_state.history.append({
-                        'question': user_input,
-                        'answer': data.get("answer", "No se obtuvo respuesta.")
-                    })
-
-                    # Mostrar la respuesta debajo del campo de entrada
-                    st.markdown(
-                        f'''
-                        <div class="answer-container">
-                            <div class="answer-box">
-                                <strong>Respuesta:</strong><br>{data.get("answer", "No se obtuvo respuesta.")}
-                            </div>
-                        </div>
-                        ''',
-                        unsafe_allow_html=True
-                    )
-
-                    # Solo mostrar el contexto (sin guardarlo en el historial)
-                    if st.session_state.selected_model == "RAG" and data.get("context"):
-                        st.markdown(
-                            f'''
-                            <div class="context-container">
-                                <div class="context-box">
-                                    <strong>Contexto Utilizado:</strong><br>{data.get("context", "No se obtuvo contexto.")}
-                                </div>
-                            </div>
-                            ''',
-                            unsafe_allow_html=True
-                        )
-                else:
-                    error_detail = response.json().get('detail', 'Error desconocido.')
-                    st.error(f"Error {response.status_code}: {error_detail}")
-
-            except requests.exceptions.ConnectionError:
-                st.error("No se pudo conectar con la API. Asegúrate de que el backend está corriendo.")
-            except Exception as e:
-                st.error(f"Ocurrió un error: {e}")
-    else:
-        st.warning("Por favor, ingresa una pregunta válida.")
-
-# Pie de página
-st.markdown('<div class="footer">Desarrollado por Platwave | 2024</div>', unsafe_allow_html=True)
+                # Preparar el historial para enviar (lista de diccionarios con 'questi
