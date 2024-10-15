@@ -4,14 +4,12 @@ FROM python:3.9
 # Establecer el directorio de trabajo en el contenedor
 WORKDIR /app
 
-# Copiar el archivo requirements.txt desde el directorio padre
+# Copiar archivos necesarios desde el directorio padre
 COPY ../requirements.txt /app/requirements.txt
+COPY ../main.py /app/main.py
 
 # Instalar las dependencias
 RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
-
-# Copiar main.py desde el directorio padre
-COPY ../main.py /app/main.py
 
 # Copiar el código del API
 COPY . /app/api
