@@ -7,8 +7,8 @@ import uuid
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # URLs de las APIs
-API_URL_RAG = "https://llmops-arch.onrender.com/get_answer"
-API_URL_DEFAULT = "https://llmops-arch.onrender.com/get_default_answer"
+API_URL_RAG = "https://llmops-arch-api.onrender.com/get_answer"
+API_URL_DEFAULT = "https://llmops-arch-api.onrender.com/get_default_answer"
 
 # Ruta del archivo CSS (eliminamos 'frontend' para evitar duplicación)
 CSS_PATH = os.path.join(BASE_DIR, 'static', 'style.css')
