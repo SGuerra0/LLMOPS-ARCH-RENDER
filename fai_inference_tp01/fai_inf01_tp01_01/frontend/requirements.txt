@@ -1,0 +1,14 @@
+langchain
+langchain-community
+python-dotenv
+langchain_fireworks
+chromadb==0.4.14
+langchain_experimental
+pydantic
+pdfplumber
+nltk 
+langchain_core
+fastapi
+uvicorn[standard]
+streamlit
+requests
