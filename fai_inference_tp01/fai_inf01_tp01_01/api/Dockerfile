@@ -1,20 +1,19 @@
-# Usar una imagen base oficial de Python
-FROM python:3.9
+FROM python:3.9-slim
 
-# Establecer el directorio de trabajo en el contenedor
+# Establecer directorio de trabajo
 WORKDIR /app
 
-# Copiar el archivo requirements.txt
-COPY requirements.txt /app/requirements.txt
+# Copiar el archivo requirements.txt desde la raíz del proyecto
+COPY ../../../../requirements.txt /app/requirements.txt
 
-# Instalar las dependencias
-RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+# Copiar todo el contenido de la API al contenedor
+COPY . /app/
 
-# Copiar todo el código de la aplicación
-COPY . /app
+# Instalar las dependencias necesarias
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
-# Exponer el puerto asignado por Render
-EXPOSE ${PORT}
+# Exponer el puerto 8000 para la API
+EXPOSE 8000
 
-# Iniciar el servidor FastAPI
-CMD uvicorn main:app --host 0.0.0.0 --port ${PORT}
+# Ejecutar la API usando Uvicorn
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
