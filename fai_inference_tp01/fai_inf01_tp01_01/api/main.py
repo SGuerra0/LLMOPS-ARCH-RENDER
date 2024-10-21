@@ -1,11 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.routing import APIRoute  # Import necesario para customizar métodos
 from .routes import router as api_router
 
 # FastAPI Application Instance
-app = FastAPI(title="Inference Pipeline API", 
-              description="Pipeline for AI model inference", 
-              version="1.0")
+app = FastAPI(
+    title="Inference Pipeline API",
+    description="Pipeline for AI model inference",
+    version="1.0"
+)
 
 # CORS Middleware Setup
 app.add_middleware(
@@ -16,10 +19,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Endpoint raíz para verificar que la API está funcionando
-@app.get("/")
-def read_root():
+# Función que permite GET y HEAD para un endpoint
+def custom_route_get_and_head():
     return {"message": "API funcionando correctamente"}
+
+# Añadir una ruta que acepte GET y HEAD explícitamente
+app.add_api_route("/", custom_route_get_and_head, methods=["GET", "HEAD"])
 
 # Endpoint de estado para verificar la salud del sistema
 @app.get("/status")
