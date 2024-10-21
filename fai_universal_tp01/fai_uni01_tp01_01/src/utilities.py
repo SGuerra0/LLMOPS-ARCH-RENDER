@@ -8,7 +8,6 @@ import uuid
 
 # Funciones para cargar y procesar documentos
 def load_documents():
-    # Cargar documentos PDF usando pypdfium2
     pdf_files = glob.glob(os.path.join(os.getenv("DATA_PATH"), "*.pdf"))
     pdf_documents = []
     for pdf_file in pdf_files:
@@ -18,15 +17,12 @@ def load_documents():
         else:
             print(f"No se extrajo texto del archivo PDF: {pdf_file}")
 
-
-    # Cargar documentos JSON y extraer el contenido de input y output
     json_files = glob.glob(os.path.join(os.getenv("DATA_PATH"), "*.json"))
     json_documents = []
     for json_file in json_files:
         with open(json_file, 'r', encoding='utf-8') as file:
             try:
                 data = json.load(file)
-                # Extraer el texto de 'input' y 'output'
                 text = extract_text_from_json(data)
                 if text.strip():
                     json_documents.append(Document(page_content=text, metadata={"source": json_file}))
@@ -40,21 +36,16 @@ def load_documents():
     return documents
 
 def extract_text_from_json(data):
-    """
-    Extrae los valores de 'input' como titulos y 'output' como contenido.
-    """
-    if isinstance(data, list):  # Asumimos que los registros estan en una lista
+    if isinstance(data, list):
         documents = []
         for item in data:
             if "input" in item and "output" in item:
                 input_text = item.get("input", "")
                 output_text = item.get("output", "")
-                # Combina el input como titulo y el output como contenido
                 full_text = f"Titulo: {input_text}\n\nContenido: {output_text}"
                 documents.append(full_text)
         return "\n".join(documents)
-    else:
-        return ""
+    return ""
 
 def extract_text_from_pdf(pdf_file):
     text = ""
@@ -73,9 +64,6 @@ def extract_text_from_pdf(pdf_file):
     return text
 
 def split_text(documents, nlp, max_chunk_size=1000):
-    """
-    Divide los documentos en chunks semanticos utilizando spaCy.
-    """
     chunks = []
     for doc in documents:
         text = doc.page_content
@@ -91,13 +79,10 @@ def split_text(documents, nlp, max_chunk_size=1000):
                 current_chunk += sentence + ' '
                 current_length += sentence_length
             else:
-                # Agregar el chunk actual a la lista de chunks
                 chunks.append(Document(page_content=current_chunk.strip(), metadata=doc.metadata))
-                # Iniciar un nuevo chunk
                 current_chunk = sentence + ' '
                 current_length = sentence_length
 
-        # Agregar el ultimo chunk
         if current_chunk:
             chunks.append(Document(page_content=current_chunk.strip(), metadata=doc.metadata))
 
@@ -105,29 +90,26 @@ def split_text(documents, nlp, max_chunk_size=1000):
     return chunks
 
 def save_to_chroma(chunks, chroma_client, embedding_model):
-    # Preparar datos con el metadato 'topic'
     texts = [chunk.page_content for chunk in chunks if chunk.page_content.strip()]
-    metadatas = [
-        {**chunk.metadata, "topic": "default_topic"}  # Agregar 'topic' como metadato
-        for chunk in chunks if chunk.page_content.strip()
-    ]
+    metadatas = [{**chunk.metadata, "topic": "default_topic"} for chunk in chunks if chunk.page_content.strip()]
     ids = [str(uuid.uuid4()) for _ in range(len(texts))]
 
-    # Crear o obtener la colección
     collection_name = os.getenv("DB_NAME")
-    if collection_name in [c.name for c in chroma_client.list_collections()]:
-        collection = chroma_client.get_collection(name=collection_name)
-    else:
-        collection = chroma_client.create_collection(name=collection_name)
 
-    # Procesar en lotes
+    # Eliminar la colección anterior si existe
+    if collection_name in [c.name for c in chroma_client.list_collections()]:
+        chroma_client.delete_collection(name=collection_name)
+        print(f"Se eliminó la colección '{collection_name}' para evitar conflictos.")
+
+    # Crear la nueva colección
+    collection = chroma_client.create_collection(name=collection_name)
+
     BATCH_SIZE = 200
 
     def batch(iterable, size):
         for i in range(0, len(iterable), size):
             yield iterable[i:i + size]
 
-    # Guardar los documentos y sus embeddings en la colección
     for texts_batch, metadatas_batch, ids_batch in zip(
         batch(texts, BATCH_SIZE), batch(metadatas, BATCH_SIZE), batch(ids, BATCH_SIZE)
     ):
@@ -140,3 +122,4 @@ def save_to_chroma(chunks, chroma_client, embedding_model):
         )
 
     print(f"Guardados {len(texts)} chunks en la colección '{collection_name}'.")
+
