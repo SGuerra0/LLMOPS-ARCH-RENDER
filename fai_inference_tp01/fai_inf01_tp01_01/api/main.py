@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from .routes import router as api_router
 
-
 # FastAPI Application Instance
 app = FastAPI(title="Inference Pipeline API", 
               description="Pipeline for AI model inference", 
@@ -16,6 +15,16 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Endpoint raíz para verificar que la API está funcionando
+@app.get("/")
+def read_root():
+    return {"message": "API funcionando correctamente"}
+
+# Endpoint de estado para verificar la salud del sistema
+@app.get("/status")
+def status():
+    return {"status": "running"}
 
 # Include the API Router
 app.include_router(api_router)
