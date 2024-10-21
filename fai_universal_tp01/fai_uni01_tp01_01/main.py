@@ -1,42 +1,44 @@
 from dotenv import load_dotenv
 from langchain_fireworks import FireworksEmbeddings
-import nltk 
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.schema import Document
+import chromadb
+import nltk
 import spacy
-
 from src.utilities import *
 
 def main():
     # Cargar variables de entorno
     load_dotenv(".env")
-    
-    # Cargar el modelo de spaCy para espanol
+
+    # Cargar spaCy y aumentar límite máximo
     nlp = spacy.load(os.getenv("SPACY_MODEL"))
+    nlp.max_length = 5000000
 
     # Descargar recursos de NLTK
     nltk.download(os.getenv("NLTK_RESOURCE"))
 
-    # Cliente LangSmith
-    # Configura tu cliente de ChromaDB
-    #chroma_client = chromadb.HttpClient(
-    #    host=os.getenv("CHROMA_HOST"),  # Use the service name or pod IP
-    #    port=int(os.getenv("CHROMA_PORT"))  # Default port or defined in your service
-    #)
-
+    # Inicializar cliente ChromaDB
     chroma_client = chromadb.PersistentClient(path=os.getenv("CHROMA_PATH"))
 
+    # Inicializar Fireworks Embeddings
     embedding_model = FireworksEmbeddings(
         model=os.getenv("FIREWORKS_EMBEDDING_MODEL"),
         api_key=os.getenv("FIREWORKS_API_KEY")
     )
 
+    # Cargar y organizar los documentos en jerarquías
     documents = load_documents()
+    document_tree = organize_documents_in_tree(documents)
 
-    chunks = split_text(documents, nlp, max_chunk_size=1000)
+    # Dividir recursivamente los documentos en chunks
+    chunks = split_documents_in_chunks(document_tree)
 
+    # Guardar los chunks y embeddings en ChromaDB
     save_to_chroma(chunks, chroma_client, embedding_model)
 
+    print("Base de datos generada exitosamente con RAPTOR.")
     return 0
-
 
 if __name__ == "__main__":
     main()
