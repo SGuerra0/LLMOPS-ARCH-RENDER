@@ -2,7 +2,7 @@ langchain
 langchain-community
 python-dotenv
 langchain_fireworks
-chromadb==0.4.14
+chromadb==0.5.11
 langchain_experimental
 pydantic
 pdfplumber
