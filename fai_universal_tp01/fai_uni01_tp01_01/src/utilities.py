@@ -105,24 +105,32 @@ def split_text(documents, nlp, max_chunk_size=1000):
     return chunks
 
 def save_to_chroma(chunks, chroma_client, embedding_model):
-    # Preparar datos
+    # Preparar datos con el metadato 'topic'
     texts = [chunk.page_content for chunk in chunks if chunk.page_content.strip()]
-    metadatas = [chunk.metadata for chunk in chunks if chunk.page_content.strip()]
+    metadatas = [
+        {**chunk.metadata, "topic": "default_topic"}  # Agregar 'topic' como metadato
+        for chunk in chunks if chunk.page_content.strip()
+    ]
     ids = [str(uuid.uuid4()) for _ in range(len(texts))]
 
-    # Crear o obtener la coleccion
-    if os.getenv("DB_NAME") in [collection.name for collection in chroma_client.list_collections()]:
-        collection = chroma_client.get_collection(name=os.getenv("DB_NAME"))
+    # Crear o obtener la colección
+    collection_name = os.getenv("DB_NAME")
+    if collection_name in [c.name for c in chroma_client.list_collections()]:
+        collection = chroma_client.get_collection(name=collection_name)
     else:
-        collection = chroma_client.create_collection(name=os.getenv("DB_NAME"))
+        collection = chroma_client.create_collection(name=collection_name)
 
     # Procesar en lotes
     BATCH_SIZE = 200
+
     def batch(iterable, size):
         for i in range(0, len(iterable), size):
             yield iterable[i:i + size]
 
-    for texts_batch, metadatas_batch, ids_batch in zip(batch(texts, BATCH_SIZE), batch(metadatas, BATCH_SIZE), batch(ids, BATCH_SIZE)):
+    # Guardar los documentos y sus embeddings en la colección
+    for texts_batch, metadatas_batch, ids_batch in zip(
+        batch(texts, BATCH_SIZE), batch(metadatas, BATCH_SIZE), batch(ids, BATCH_SIZE)
+    ):
         embeddings_batch = embedding_model.embed_documents(texts_batch)
         collection.upsert(
             documents=texts_batch,
@@ -131,7 +139,4 @@ def save_to_chroma(chunks, chroma_client, embedding_model):
             embeddings=embeddings_batch
         )
 
-    # Configura el cliente para que persista la base de datos en la ruta especificada
-    client = chromadb.PersistentClient(path=os.getenv("CHROMA_PATH"))
-
-    print(f"Guardados {len(texts)} chunks en la coleccion.")
+    print(f"Guardados {len(texts)} chunks en la colección '{collection_name}'.")
