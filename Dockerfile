@@ -1,20 +1,18 @@
-# Usar una imagen base oficial de Python
-FROM python:3.9
+# Imagen base de Python
+FROM python:3.9-slim
 
-# Establecer el directorio de trabajo en el contenedor
+# Establecer directorio de trabajo
 WORKDIR /app
 
-# Copiar el archivo requirements.txt
+# Copiar el archivo de base de datos y dependencias
+COPY data/universal/chroma.sqlite3 /app/chroma.sqlite3
 COPY requirements.txt /app/requirements.txt
 
 # Instalar dependencias
-RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar el código de la aplicación
-COPY . /app
+# Exponer el puerto para la API de ChromaDB
+EXPOSE 7700
 
-# Exponer el puerto asignado por Render
-EXPOSE ${PORT}
-
-# Iniciar la aplicación Streamlit
-CMD streamlit run frontend/main_streamlit.py --server.port ${PORT} --server.address 0.0.0.0
+# Comando de inicio para el servicio ChromaDB
+CMD ["python", "-m", "chromadb", "--host", "0.0.0.0", "--port", "7700"]
