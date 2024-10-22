@@ -41,7 +41,7 @@ def update_model(model_name: str, temperature: float) -> Fireworks:
     return Fireworks(
         model=model_name,
         temperature=temperature,
-        max_tokens=400
+        max_tokens=600
     )
 
 # Cargar Fireworks Embeddings para la recuperación de documentos
