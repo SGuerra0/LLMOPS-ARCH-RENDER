@@ -2,164 +2,120 @@ import streamlit as st
 import requests
 import os
 import uuid
+import streamlit.components.v1 as components
+import base64
 
-# Obtener la ruta del directorio donde está ubicado este archivo
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-# URLs de las APIs
+# Configuración de URLs de API desde el primer código
 API_URL_RAG = "https://llmops-arch-api.onrender.com/get_answer"
 API_URL_DEFAULT = "https://llmops-arch-api.onrender.com/get_default_answer"
-
-# Ruta del archivo CSS y del logo
-CSS_PATH = os.path.join(BASE_DIR, 'static', 'style.css')
-LOGO_PATH = os.path.join(BASE_DIR, 'static', 'unoafp_logo.png')
+CSS_PATH = "static/style.css"
+LOGO_PATH = "static/unoafp_logo.png"
 
 # Configuración de la página
-st.set_page_config(page_title="UnoAfp GPT", page_icon=":robot_face:", layout="centered")
+st.set_page_config(page_title="UNO AFP GPT", page_icon=":robot_face:", layout="wide")
 
-# Leer el archivo CSS
-try:
-    with open(CSS_PATH, "r") as css_file:
-        css_content = css_file.read()
-    st.markdown(f"<style>{css_content}</style>", unsafe_allow_html=True)
-except FileNotFoundError:
-    st.error(f"El archivo CSS no se encontró en la ruta: {CSS_PATH}")
-
-# Mostrar el logo y el título en una fila
-col1, col2 = st.columns([1, 4])
-with col1:
-    st.image(LOGO_PATH, width=100)
-with col2:
-    st.markdown('<div class="main-title" style="text-align: center;">UNO AFP GPT</div>', unsafe_allow_html=True)
-
-# Descripción inicial
-st.write("**Elige la configuración del modelo para generar la respuesta.**")
+# Leer e inyectar CSS
+with open(CSS_PATH, "r") as css_file:
+    css_content = css_file.read()
+st.markdown(f"<style>{css_content}</style>", unsafe_allow_html=True)
 
 # Inicializar variables en session_state
 if 'selected_model' not in st.session_state:
-    st.session_state.selected_model = "RAG"
-
+    st.session_state.selected_model = "Base de datos especializada"
 if 'history' not in st.session_state:
     st.session_state.history = []
-
 if 'session_id' not in st.session_state:
     st.session_state.session_id = str(uuid.uuid4())
 
-# Crear columnas para los botones de configuración y el nuevo botón "Borrar Memoria"
-config_col1, config_col2, spacer, config_col3 = st.columns([1, 1, 2, 1])
+# Opciones de modelos
+model_options = {
+    "LLaMA 70B": "accounts/fireworks/models/llama-v3p1-70b-instruct",
+    "Firefunction v2": "accounts/fireworks/models/firefunction-v2",
+    "LLaMA 8B": "accounts/fireworks/models/llama-v3p1-8b-instruct"
+}
 
-with config_col1:
-    if st.button("RAG", use_container_width=True):
-        st.session_state.selected_model = "RAG"
+# Crear columnas: izquierda (opciones) y derecha (formulario y logo)
+left_col, right_col = st.columns([1, 2], gap="large")
 
-with config_col2:
-    if st.button("DEFAULT", use_container_width=True):
+with left_col:
+    st.subheader("Configuración del Modelo")
+
+    # Botones verticales
+    if st.button("Base de datos especializada"):
+        st.session_state.selected_model = "Base de datos especializada"
+    st.write("")
+    if st.button("Default"):
         st.session_state.selected_model = "Default"
-
-# Botón para borrar memoria, alineado a la derecha
-with config_col3:
-    if st.button("Borrar Memoria", use_container_width=True):
-        st.session_state.history = []
+    st.write("")
+    if st.button("Borrar Memoria"):
+        st.session_state.history.clear()
         st.session_state.session_id = str(uuid.uuid4())
         st.success("¡Memoria borrada!")
 
-# Mostrar el modelo seleccionado
-st.markdown(
-    f'<div class="model-selection" style="text-align:center; font-weight:bold;">Modelo seleccionado: {st.session_state.selected_model}</div>',
-    unsafe_allow_html=True,
-)
+    st.write(f"**Configuración seleccionada:** {st.session_state.selected_model}")
+    temperature = st.slider("Temperatura del modelo", 0.0, 1.0, 0.6, 0.1)
 
-# Slider para ajustar la temperatura del modelo
-st.write("**Ajusta la temperatura del modelo (entre 0 y 1):**")
-temperature = st.slider("Temperatura del modelo", min_value=0.0, max_value=1.0, value=0.6, step=0.1)
+    model_name = st.selectbox("Selecciona un modelo", list(model_options.keys()), index=0)
+    model_option = model_options[model_name]
 
-# Diccionario de modelos
-model_options = {
-    "Firefunction v2": "accounts/fireworks/models/firefunction-v2",
-    "LLaMA 8B": "accounts/fireworks/models/llama-v3p1-8b-instruct",
-    "LLaMA 70B": "accounts/fireworks/models/llama-v3p1-70b-instruct"
-}
-
-# Selectbox para seleccionar el modelo
-st.write("**Selecciona el modelo a utilizar:**")
-model_name = st.selectbox("Modelos disponibles", list(model_options.keys()))
-model_option = model_options[model_name]
-
-# Mostrar historial de conversación
-if st.session_state.history:
-    st.markdown('<div class="history-title">Historial de la conversación</div>', unsafe_allow_html=True)
-    for entry in st.session_state.history:
-        st.markdown(
-            f'''
-            <div class="conversation">
-                <div class="user-message"><strong>Usuario:</strong> {entry['question']}</div>
-                <div class="bot-response"><strong>Bot:</strong> {entry['answer']}</div>
+    st.subheader("Historial")
+    if st.session_state.history:
+        history_entries = ""
+        for entry in reversed(st.session_state.history):
+            history_entries += f'''
+            <div class="history-entry">
+                <p><strong>Pregunta:</strong><br>{entry['question']}</p>
+                <p><strong>Respuesta:</strong><br>{entry['answer']}</p>
             </div>
-            ''',
-            unsafe_allow_html=True
-        )
+            '''
+        history_html = f'<div class="history-panel">{history_entries}</div>'
+        components.html(f"<style>{css_content}</style>{history_html}", height=420, scrolling=False)
+    else:
+        st.write("El historial está vacío.")
 
-# Formulario para la entrada del usuario
-with st.form(key='my_form'):
-    user_input = st.text_area("", placeholder="Ingresa tu pregunta", height=150)
-    submit_button = st.form_submit_button(label='Generar Respuesta')
+with right_col:
+    # Mostrar el logo
+    def get_base64_image(image_path):
+        with open(image_path, "rb") as img_file:
+            return base64.b64encode(img_file.read()).decode()
 
-if submit_button:
-    if user_input.strip():
-        with st.spinner(f'Generando respuesta con el modelo {st.session_state.selected_model}...'):
+    logo_base64 = get_base64_image(LOGO_PATH)
+    st.markdown(f'<div style="display: flex; justify-content: center;"><img src="data:image/png;base64,{logo_base64}" style="width:180px;"/></div>', unsafe_allow_html=True)
+
+    # Formulario para ingresar preguntas
+    with st.form("input_form"):
+        user_input = st.text_area("", placeholder="Ingresa tu pregunta", height=150)
+        submit = st.form_submit_button("Generar Respuesta")
+
+    if submit and user_input.strip():
+        with st.spinner(f'Generando respuesta con {st.session_state.selected_model}...'):
             try:
-                api_url = API_URL_RAG if st.session_state.selected_model == "RAG" else API_URL_DEFAULT
-
-                history_to_send = [{'question': h['question'], 'answer': h['answer']} for h in st.session_state.history]
-
+                api_url = API_URL_RAG if st.session_state.selected_model == "Base de datos especializada" else API_URL_DEFAULT
                 payload = {
                     "question": user_input,
                     "temperature": temperature,
                     "model": model_option,
                     "session_id": st.session_state.session_id,
-                    "history": history_to_send
+                    "history": st.session_state.history,
                 }
-
                 response = requests.post(api_url, json=payload)
+                data = response.json()
 
-                if response.status_code == 200:
-                    data = response.json()
-                    st.session_state.history.append({
-                        'question': user_input,
-                        'answer': data.get("answer", "No se obtuvo respuesta.")
-                    })
+                st.session_state.history.append({
+                    'question': user_input,
+                    'answer': data.get("answer", "No se obtuvo respuesta.")
+                })
 
-                    st.markdown(
-                        f'''
-                        <div class="answer-container">
-                            <div class="answer-box">
-                                <strong>Respuesta:</strong><br>{data.get("answer", "No se obtuvo respuesta.")}
-                            </div>
-                        </div>
-                        ''',
-                        unsafe_allow_html=True
-                    )
-
-                    if st.session_state.selected_model == "RAG" and data.get("context"):
-                        st.markdown(
-                            f'''
-                            <div class="context-container">
-                                <div class="context-box">
-                                    <strong>Contexto Utilizado:</strong><br>{data.get("context", "No se obtuvo contexto.")}
-                                </div>
-                            </div>
-                            ''',
-                            unsafe_allow_html=True
-                        )
-                else:
-                    error_detail = response.json().get('detail', 'Error desconocido.')
-                    st.error(f"Error {response.status_code}: {error_detail}")
-
-            except requests.exceptions.ConnectionError:
-                st.error("No se pudo conectar con la API. Asegúrate de que el backend está corriendo.")
+                answer_html = f'''
+                <div class="current-answer">
+                    <p><strong>Respuesta:</strong><br>{data.get('answer', 'No se obtuvo respuesta.')}</p>
+                    {'<p><strong>Contexto:</strong><br>' + data.get('context', '') + '</p>' if data.get('context') else ''}
+                </div>
+                '''
+                components.html(f"<style>{css_content}</style>{answer_html}", height=500, scrolling=True)
             except Exception as e:
-                st.error(f"Ocurrió un error: {e}")
-    else:
+                st.error(f"Error: {e}")
+    elif submit:
         st.warning("Por favor, ingresa una pregunta válida.")
 
 # Pie de página
