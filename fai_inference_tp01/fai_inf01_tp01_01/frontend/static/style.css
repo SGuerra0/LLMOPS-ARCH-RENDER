@@ -1,9 +1,11 @@
 :root {
-    --background-color: #0E1117;
-    --background-color-secondary: #161B22;
-    --text-color: #FFFFFF;
-    --primary-color: #1F6FEB;
-    --primary-color-hover: #3C8DFF;
+    --background-color: #f6f8fc;
+    --background-color-secondary: #f7f7f7;
+    --text-color: #000000;
+    --primary-color: #26a5de;
+    --primary-color-hover: #1e8bbd;
+    --delete-button-color: #ab2185;
+    --delete-button-hover: #8f1a6d;
     --font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -23,6 +25,15 @@ strong {
     color: var(--text-color);
 }
 
+/* Contenedor principal para la sección izquierda sin borde */
+.left-container {
+    border-radius: 8px;
+    padding: 15px;
+    background-color: var(--background-color-secondary);
+    margin-top: 10px;
+}
+
+/* Panel de historial */
 .history-panel {
     max-height: 400px;
     overflow-y: auto;
@@ -54,22 +65,23 @@ strong {
     margin-top: 20px;
 }
 
+/* Scrollbar claro para el historial */
 .history-panel::-webkit-scrollbar {
     width: 8px;
 }
 
 .history-panel::-webkit-scrollbar-track {
-    background: var(--background-color-secondary);
+    background: #e0e0e0;
 }
 
 .history-panel::-webkit-scrollbar-thumb {
-    background-color: #555;
+    background-color: #cccccc;
     border-radius: 4px;
-    border: 2px solid var(--background-color-secondary);
+    border: 2px solid #e0e0e0;
 }
 
 .history-panel::-webkit-scrollbar-thumb:hover {
-    background-color: #888;
+    background-color: #bbbbbb;
 }
 
 img {
@@ -77,7 +89,7 @@ img {
 }
 
 img:hover {
-    transform: scale(1.1);
+    transform: scale(1.03);
 }
 
 textarea, select, input {
@@ -90,7 +102,52 @@ textarea:focus, select:focus, input:focus {
     box-shadow: 0 0 10px var(--primary-color-hover);
 }
 
-/* Estilo para los botones de la izquierda */
-div[data-testid="stVerticalBlock"] > div > button {
-    width: 100%;
+/* Botón personalizado */
+button, .stButton button {
+    background-color: var(--primary-color) !important;
+    color: #FFFFFF !important;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
 }
+
+button:hover, .stButton button:hover {
+    background-color: var(--primary-color-hover) !important;
+}
+
+/* Forzar ancho uniforme para los botones de la izquierda */
+.stButton button {
+    width: 100% !important;
+    margin: 5px 0; /* Espacio entre botones */
+}
+
+/* Alinear el botón de "Generar Respuesta" a la derecha dentro del formulario */
+.stForm button[type="submit"] {
+    width: auto;
+    float: right;
+    margin-top: 10px;
+}
+
+/* Estilo específico para el botón "Borrar Memoria" */
+.stButton button[aria-label="Borrar Memoria"] {
+    background-color: var(--delete-button-color) !important;
+}
+
+.stButton button[aria-label="Borrar Memoria"]:hover {
+    background-color: var(--delete-button-hover) !important;
+}
+
+/* Logo de Platwave en la esquina inferior derecha */
+.footer-logo {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 80px;
+}
+/* Ocultar la barra de Streamlit */
+.css-hi6a2p {
+    display: none !important;
+}
+    
