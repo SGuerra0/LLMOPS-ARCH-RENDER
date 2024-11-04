@@ -11,7 +11,7 @@ API_URL_RAG = "https://llmops-arch-render.onrender.com/get_answer"
 API_URL_DEFAULT = "https://llmops-arch-render.onrender.com/get_default_answer"
 CSS_PATH = "static/style.css"
 BANNER_PATH = "static/afpuno1.png"  # Banner que ahora estará arriba de todo, en formato wide y más pequeño
-PLATWAVE_LOGO_PATH = "static/platwave iso.png"
+PLATWAVE_LOGO_PATH = "static/platwave_iso.png"
 ROBOT_PATH = "static/robot.png"  # Ruta de la imagen robot.png
 
 # Configuración de la página
