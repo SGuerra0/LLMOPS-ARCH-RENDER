@@ -35,7 +35,7 @@ def retrieve_docs(question: str) -> str:
         query_embedding = embedding_model.embed_query(question)
         results = collection.query(
             query_embeddings=[query_embedding],
-            n_results=8
+            n_results=15
         )
     except Exception as e:
         print(f"Error retrieving documents: {e}")
